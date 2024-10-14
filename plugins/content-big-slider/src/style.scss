@@ -1,0 +1,57 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-content-big-slider {
+    button.owl-prev,
+    button.owl-next {
+        position: absolute;
+        top: 35%;
+    }
+    button.owl-prev {
+        left:1%;
+    }
+    button.owl-next {
+        right:1%;
+    }
+    button.owl-prev span,
+    button.owl-next span {
+        color:white;
+    }
+    
+    .owl-theme .owl-dots .owl-dot span {
+        width: 200px;
+        height: 3px;
+        border-radius: 0;
+        transition:all .25s ease-in-out;
+    }
+    .owl-theme .owl-dots .owl-dot.active span,
+    .owl-theme .owl-dots .owl-dot:hover span {
+        background: white;
+        background: var(--accent-secondary);
+    }
+    .owl-dots {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .owl-prev span, .owl-next span {
+        font-size: 8rem;
+        line-height: 1;
+    }
+
+    @media only screen and (max-width:767px) {
+        .owl-carousel .owl-item img {
+            height: 300px !important;
+        }
+        .owl-theme .owl-dots .owl-dot span {
+            width: 50px;
+            height: 3px;
+            border-radius: 0;
+            transition:all .25s ease-in-out;
+        }
+    }
+}

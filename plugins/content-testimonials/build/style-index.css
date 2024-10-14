@@ -1,0 +1,30 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+@media only screen and (min-width: 991px) {
+  .wp-block-create-block-content-testimonials button.owl-prev,
+  .wp-block-create-block-content-testimonials button.owl-next {
+    position: absolute;
+    top: 20%;
+  }
+  .wp-block-create-block-content-testimonials button.owl-prev {
+    left: -4%;
+  }
+  .wp-block-create-block-content-testimonials button.owl-next {
+    right: -4%;
+  }
+}
+.wp-block-create-block-content-testimonials .owl-nav img {
+  width: 35px;
+}
+.wp-block-create-block-content-testimonials p {
+  color: #acacac;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

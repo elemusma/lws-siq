@@ -1,0 +1,89 @@
+.btn-main, .btn-main a,
+span.wc-block-components-button__text,
+.yith-wapo-ajax-uploader-container span.button,
+.product.type-product a.add_to_cart_button,
+a.wp-block-button__link.add_to_cart_button {
+    background:var(--accent-secondary);
+    padding: 3px 35px 0px;
+    transition: all .25s ease-in-out;
+    display: inline-block;
+    text-decoration: none;
+    /* color: black!important; */
+    color: var(--accent-primary)!important;
+    font-style:italic;
+    text-shadow:none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    border:1px solid var(--accent-secondary);
+    font-family: 'poppinssemibold';
+    margin: 10px;
+}
+.yith-wapo-ajax-uploader-container span.button{
+    margin-left:0px;
+}
+
+.btn-main:hover, 
+span.wc-block-components-button__text:hover,
+a.wp-block-button__link.add_to_cart_button:hover
+{
+    background: var(--accent-secondary-hover);
+    border-color:var(--accent-secondary-hover);
+    text-decoration: none;
+}
+.btn-main.outline {
+    border: 1px solid var(--accent-secondary);
+    color:var(--accent-secondary) !important;
+    background:transparent;
+}
+
+.btn-main.outline:hover {
+    background: var(--accent-secondary);
+    color:black !important;
+}
+.btn-main.outline.accent {
+    border-color: var(--accent-primary);
+    color:var(--accent-primary);
+    background:transparent;
+}
+
+.btn-main.outline.accent:hover {
+    background: var(--accent-secondary);
+    color:white;
+}
+.btn-main.outline.white {
+    border-color: white;
+    color:white;
+    background:transparent;
+}
+
+.btn-main.outline.white:hover {
+    background: white;
+    color:black;
+}
+a.xt_wooqv-trigger.button.alt.xt_wooqv-before.xt_wooqv-icontype-font {
+    border: 1px solid var(--accent-secondary);
+    color: var(--accent-secondary) !important;
+    background: transparent;
+    border-radius: 25px;
+    padding: 15px 54px;
+    margin-right:0px !important;
+	transition: all .25s ease-in-out;
+}
+a.xt_wooqv-trigger.button.alt.xt_wooqv-before.xt_wooqv-icontype-font:hover {
+    color: black !important;
+    background: var(--accent-secondary) !important;
+}
+
+li.xt_wooqv-pos-before.product.type-product {
+    text-align: center;
+}
+
+/* woocommerce */
+span.wc-block-components-button__text {
+    width: 100%;
+    margin: 0;
+}
+button.components-button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained {
+    border: none!important;
+    background: none!important;
+}

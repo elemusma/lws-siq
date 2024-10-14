@@ -1,0 +1,114 @@
+# Copyright (C) 2024 Sortable Dashboard To-Do List
+# This file is distributed under the same license as the Ignore Plugin Update package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sortable Dashboard To-Do List\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Description of the plugin
+msgid "Adds a to-do list to the WordPress dashboard."
+msgstr ""
+
+msgid "To-Do List"
+msgstr ""
+
+msgid "Add New To-Do Item"
+msgstr ""
+
+msgid "Edit To-Do Item"
+msgstr ""
+
+msgid "Title (required)"
+msgstr ""
+
+msgid "Description (optional)"
+msgstr ""
+
+msgid "No additional content was provided."
+msgstr ""
+
+msgid "Delete To-Do Item"
+msgstr ""
+
+msgid "This item will be permanently deleted and cannot be recovered. Are you sure?"
+msgstr ""
+
+msgid "Added %s"
+msgstr ""
+
+msgid "Last edit %s"
+msgstr ""
+
+msgid "Recently added"
+msgstr ""
+
+msgid "Recently edited"
+msgstr ""
+
+msgid "Show list on website (current user only)"
+msgstr ""
+
+msgid "Position:"
+msgstr ""
+
+msgid "Left side of window"
+msgstr ""
+
+msgid "Right side of window"
+msgstr ""
+
+msgid "Accent:"
+msgstr ""
+
+msgid "Show on website (current user only)"
+msgstr ""
+
+msgid "Show list"
+msgstr""
+
+msgid "Collapse list"
+msgstr""
+
+msgid "Please <a href=\"%s\" target=\"_blank\" rel=\"noopener\">rate the plugin ★★★★★</a> to help keep it up-to-date & maintained. Thank you!"
+msgstr""
+
+msgid "The items below were affected to you by other users"
+msgstr ""
+
+msgid "Affected to you by %s"
+msgstr ""
+
+msgid "This item was affected to you by %s"
+msgstr ""
+
+msgid "Unknown user"
+msgstr ""
+
+msgid "Affected"
+msgstr ""
+
+msgid "Pending completion"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "You affected this item to:"
+msgstr ""
+
+msgid "Affect item to:"
+msgstr ""
+
+msgid "Are you sure you want to mark the item as completed?"
+msgstr ""
+
+msgid "Mark As Completed"
+msgstr ""
+
+msgid "You marked this item as completed"
+msgstr ""
+
+msgid "Drag to sort"
+msgstr ""

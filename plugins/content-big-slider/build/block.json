@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/content-big-slider",
+  "version": "0.1.0",
+  "title": "Content Big Slider",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "section_style": {
+      "type": "string",
+      "default": "position-relative"
+    },
+    "section_class": {
+      "type": "string",
+      "default": "padding:0px 0px;"
+    },
+    "section_id": {
+      "type": "string",
+      "default": ""
+    },
+    "section_image": {
+      "type": "string",
+      "default": null
+    },
+    "section_image_class": {
+      "type": "string"
+    },
+    "section_image_style": {
+      "type": "string"
+    },
+    "section_block": {
+      "type": "string",
+      "default": ""
+    },
+    "carousel_class": {
+      "type": "string",
+      "default": "carousel-slider owl-carousel owl-theme"
+    },
+    "carousel_style": {
+      "type": "string",
+      "default": ""
+    },
+    "carousel_data_aos": {
+      "type": "string",
+      "default": ""
+    },
+    "carousel_data_aos_delay": {
+      "type": "string",
+      "default": ""
+    },
+    "carousel_data_aos_offset": {
+      "type": "string",
+      "default": ""
+    },
+    "gallery_images": {
+      "type": "array",
+      "default": []
+    },
+    "gallery_images_class": {
+      "type": "string",
+      "default": "w-100"
+    },
+    "gallery_images_style": {
+      "type": "string",
+      "default": "object-fit:cover;height:550px;"
+    }
+  },
+  "textdomain": "content-big-slider",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

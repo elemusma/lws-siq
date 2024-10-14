@@ -1,0 +1,4 @@
+ID,Title,"Included Product","Excluded Product","Included Catagory","Excluded Catagory",Users,"User Roles","Minimum Quantity","Maximum Quantity","Discount Type","Discount Value",range_type
+1,"Range Sample",all,23,"21,18",23,"1 ,2 ","editor,author",1,3,fix,8
+1,"Range Sample",all,23,"21,18",23,"1 ,2 ","editor,author",3,5,percent,6
+1,"Range Sample",all,23,"21,18",23,"1 ,2 ","editor,author",7,9,fix,3

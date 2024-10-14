@@ -1,0 +1,266 @@
+.sdtdl-dialog-content, .sdtdl-content-container, .sdtdl-no-content-container, .hidden-setting {
+    display: none;
+}
+
+#sdtdl_to_do_widget .postbox-header h2{
+    justify-content: flex-start;
+}
+
+#sdtdl_to_do_widget .postbox-header h2:before{
+    content: "\f203";
+    font-family: dashicons;
+    margin-right: 10px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.sdtdl-item-title {
+    font-weight: bold;
+}
+
+.sdtdl-dialog {
+    padding: 3px;
+}
+
+.sdtdl-add-button,
+.sdtdl-dialog .ui-dialog-buttonset button {
+    color: white;
+    background: var(--sdtdl-color);
+    border-radius: 5px;
+    text-align: center;
+    border: 0;
+    box-shadow: none;
+}
+
+.sdtdl-add-button {
+    padding: 5px 10px;
+    display: table;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.sdtdl-settings-button{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    height: 30px;
+    float: left;
+    cursor: pointer;
+    width: 30px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.sdtdl-settings-button svg{
+    height: 20px;
+    margin: 0 auto;
+}
+
+.sdtdl-add-button:hover,
+.sdtdl-dialog .ui-dialog-buttonset button:hover {
+    color: white;
+    background: var(--sdtdl-color);
+    box-shadow: 0 0 10px 0 var(--sdtdl-bg-color);
+}
+
+.sdtdl-add-button:hover {
+    cursor: pointer
+}
+
+.sdtdl-added {
+    font-style: italic
+}
+
+.sdtdl-new-container, .sdtdl-edit-container {
+    display: flex;
+    flex-flow: column;
+}
+
+#new-sdtdl-title, #new-sdtdl-text, #edit-sdtdl-title, #edit-sdtdl-text, textarea.sdtdl-content-text {
+    display: block;
+    width: 100%;
+}
+
+
+.sdtdl-settings-container .sdtdl-setting{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap:5px
+}
+
+.sdtdl-content-text {
+    white-space: pre-wrap;
+}
+
+#new-sdtdl-title.error, #edit-sdtdl-title.error {
+    border-color: #e65054;
+}
+
+#new-sdtdl-title.error::placeholder, #edit-sdtdl-title.error::placeholder {
+    color: #e65054;
+    opacity: 1
+}
+
+.sdtdl-save, #new-sdtdl-text, #edit-sdtdl-text,.show-front-option {
+    margin-top: 10px;
+}
+
+.sdtdl-list {
+    visibility: hidden;
+    width: 100%;
+}
+
+.sdtdl-list li {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 13px;
+    margin-bottom: 11px;
+    border: 1px solid #ccc;
+    justify-content: space-between;
+}
+.sdtdl-list li.complete{
+    opacity: 0.5;
+}
+#sdtdl-affected-list .complete .sdtdl-item-title{
+    text-decoration: line-through;
+    text-decoration-color: green;
+    text-decoration-thickness: 3px;
+}
+
+.sdtdl-dialog .ui-dialog-titlebar {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: var(--sdtdl-bg-color);
+    border: 1px solid var(--sdtdl-color);
+    position: relative;
+}
+
+.sdtdl-dialog .ui-dialog-titlebar-close {
+    background: white;
+    position: absolute;
+    right: 0.3em;
+    top: 50%;
+    width: 20px;
+    margin: -10px 0 0 0;
+    padding: 1px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid var(--sdtdl-color);
+}
+
+.sdtdl-dialog .ui-dialog-titlebar-close:hover, .sdtdl-dialog .ui-dialog-titlebar-close:focus {
+    background: transparent;
+    color: #000;
+}
+
+.sdtdl-dialog .ui-dialog-titlebar-close:active {
+    background: var(--sdtdl-color);
+    color: #000;
+}
+
+.sdtdl-dialog .ui-dialog-titlebar-close:before {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: -18px;
+}
+
+.sdtdl-dialog .ui-icon-closethick {
+    width: 16px;
+    height: 16px;
+}
+
+.sdtdl-list .dashicons-sort {
+    float: right;
+    cursor: move;
+    font: normal 20px/1 dashicons;
+}
+.sdtdl-affectation-icons{
+    float: left;
+    display: none;
+}
+.sdtdl-item.affected.pending .sdtdl-affectation-icons .dashicons-yes{
+    display: none;
+}
+.sdtdl-item.affected.complete .sdtdl-affectation-icons .dashicons-clock{
+    display: none;
+}
+.sdtdl-item.affected .sdtdl-affectation-icons{
+    display: flex;
+}
+
+.sdtdl-list .dashicons-migrate.in-title,.sdtdl-list .dashicons-clock {
+    font: normal 18px/1 dashicons;
+}
+.sdtdl-list .dashicons-clock,.sdtdl-dialog-content .dashicons-clock{
+    color:orange
+}
+
+.sdtdl-dates {
+    margin-top: 20px;
+    font-size: 10px;
+    font-style: italic;
+    line-height: 20px;
+}
+.sdtdl-date-added, .sdtdl-date-edited{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sdtdl-dates .dashicons {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    margin-right: 3px;
+}
+.sdtdl-affected-task-info{
+    display:none;
+    margin-top:20px;
+    font-style:italic;
+}
+.sdtdl-affected .sdtdl-affected-task-info,.sdtdl-affected-item .sdtdl-affected-task-info{
+    display: block;
+}
+.sdtdl-affected-task-complete{
+    display:none;
+    font-style:italic;
+}
+.sdtdl-dialog-content .dashicons-yes,.sdtdl-list .dashicons-yes{
+    color:green;
+}
+
+.sdtdl-complete .sdtdl-affected-task-complete{
+    display: block;
+}
+
+.sdtdl-delete-item .dashicons-warning,.sdtdl-confirm-complete-item .dashicons-warning {
+    float: left;
+    margin: 12px 12px 20px 0;
+    color: #e65054;
+}
+
+.sdtdl-view-item .sdtdl-content-text ul,.sdtdl-view-item .sdtdl-content-text ol{
+    white-space: normal;
+    margin: 10px 0;
+}
+.sdtdl-view-item .sdtdl-content-text li{
+    margin-left: 16px;
+}
+.sdtdl-view-item .sdtdl-content-text ul {
+    list-style: disc;
+}
+
+.sdtdl-please-rate{
+    margin-top: 10px;
+    font-size: 10px;
+}
+

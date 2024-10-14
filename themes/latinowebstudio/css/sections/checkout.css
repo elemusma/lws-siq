@@ -1,0 +1,97 @@
+/* start of my rewards */
+.wc-block-components-discounts-meta.css-0.e19lxcc00 {
+    background: #FEECC2;
+}
+/* end of my rewards */
+
+/* delivery time & date plugin */
+.wp-block-iconic-wds.wp-block-iconic-wds--theme-dark {
+    padding: 15px;
+    background: #BCC7F0;
+}
+@media only screen and (min-width:761px) {
+    input#iconic-wds-date {
+        width: 90%;
+        max-width: 100%;
+    }
+}
+select#iconic-wds-timeslot {
+    padding: 5px 15px;
+}
+label[for="radio-control-0-free_shipping:5"] {
+    padding-bottom: 75px !important;
+}
+
+span#radio-control-0-free_shipping\:5__label:after {
+    content: "Pickup times are from 12-9pm Tues-Saturday. You will receive a call from our team to confirm order and pickup time.";
+    position: absolute;
+    bottom: -55px;
+    left: 0;
+    font-style: italic;
+    font-size: 12px;
+}
+
+span#radio-control-0-free_shipping\:5__label {
+    position: relative;
+}
+input.wc-block-components-radio-control__input {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+/* delivery time & date plugin */
+
+h2.woocommerce-column__title {
+    line-height: 2;
+}
+/* on checkout page */
+
+
+/* start of UPS Shipping Options */
+.woocommerce-shipping-methods label {
+    width: 325px;
+}
+/* end of UPS Shipping Options */
+
+/* on other page */
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
+    max-width:48%;
+}
+/* .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2
+{
+    width: 100% !important;
+    float: none !important;
+    max-width: 100%;
+    flex: 0 0 100%;
+} */
+
+input[type="radio"] {
+    width: auto;
+    display: inline-block;
+}
+
+.payment_box.payment_method_first_data_clover_credit_card {
+    display: block !important;
+    flex: 0 0 100%;
+}
+
+label[for="payment_method_first_data_clover_credit_card"] {
+    width: 90%;
+    display: inline-block;
+    flex: 0 0 100%;
+}
+
+input.wc-block-components-radio-control__input {
+    padding: 0px !important;
+}
+
+button.wc-block-components-checkout-place-order-button {
+    background: none;
+    border: none;
+}
+
+button.wc-block-components-checkout-place-order-button span {
+    cursor: pointer;
+}

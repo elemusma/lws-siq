@@ -1,0 +1,120 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/content-view-our-work",
+	"version": "0.1.0",
+	"title": "Content View Our Work",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false
+	},"attributes": {
+		"section_style": {
+			"type": "string",
+			"default": "padding:100px 0px;"
+		},
+		"section_class": {
+			"type": "string",
+			"default": "position-relative"
+		},
+		"section_id": {
+			"type": "string",
+			"default": ""
+		},
+		"section_image": {
+		  "type": "string",
+		  "default": null
+		},
+		"section_block": {
+		  "type": "string",
+		  "default":""
+		},
+		"container_style": {
+			"type": "string",
+			"default": ""
+		},
+		"container_class": {
+			"type": "string",
+			"default": "container"
+		},
+		"container_id": {
+			"type": "string",
+			"default": ""
+		},
+		"row_style": {
+			"type": "string",
+			"default": ""
+		},
+		"row_class": {
+			"type": "string",
+			"default": "row justify-content-center"
+		},
+		"row_id": {
+			"type": "string",
+			"default": ""
+		},
+		"col_style": {
+			"type": "string",
+			"default": ""
+		},
+		"col_class": {
+			"type": "string",
+			"default": "col-lg-12 text-center"
+		},
+		"col_id": {
+			"type": "string",
+			"default": ""
+		},
+		"col_data_aos": {
+			"type": "string",
+			"default": "fade-up"
+		},
+		"col_data_aos_delay": {
+			"type": "string",
+			"default": ""
+		},
+		"col_data_aos_delay_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"carousel_class": {
+			"type": "string",
+			"default": "carousel-view-our-work owl-carousel owl-theme"
+		},
+		"carousel_style": {
+			"type": "string",
+			"default": ""
+		},
+		"carousel_data_aos": {
+			"type": "string",
+			"default": ""
+		},
+		"carousel_data_aos_delay": {
+			"type": "string",
+			"default": ""
+		},
+		"carousel_data_aos_offset": {
+			"type": "string",
+			"default": ""
+		},
+		"gallery_images": {
+			"type": "array",
+			"default": []
+		},
+		"gallery_images_class": {
+			"type": "string",
+			"default": "w-100"
+		},
+		"gallery_images_style": {
+			"type": "string",
+			"default": "object-fit:cover;height:550px;"
+		}
+	},
+	"textdomain": "content-view-our-work",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

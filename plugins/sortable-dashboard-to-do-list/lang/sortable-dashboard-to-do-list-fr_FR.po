@@ -1,0 +1,134 @@
+# Translation of Plugins - Sortable Dashboard To-Do List - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Sortable Dashboard To-Do List - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-09-18 09:47+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: fr_FR\n"
+"Project-Id-Version: Plugins - Sortable Dashboard To-Do List - Stable (latest "
+"release)\n"
+"Language-Team: Français"
+
+msgid "Accent:"
+msgstr "Accent :"
+
+msgid "Add New To-Do Item"
+msgstr "Ajouter une nouvelle tâche"
+
+msgid "Added %s"
+msgstr "Ajoutée le %s"
+
+#. Description of the plugin
+msgid "Adds a to-do list to the WordPress dashboard."
+msgstr "Ajoute une liste de tâches à réaliser au tableau de bord WordPress."
+
+msgid "Affect item to:"
+msgstr "Affecter la tâche à :"
+
+msgid "Affected"
+msgstr "Affectée"
+
+msgid "Affected to you by %s"
+msgstr "Vous a été affectée par %s"
+
+#| msgid "Are you sure you want to mark the item as complete?"
+msgid "Are you sure you want to mark the item as completed?"
+msgstr "Voulez-vous vraiment marquer la tâche comme terminée ?"
+
+msgid "Collapse list"
+msgstr "Replier la liste"
+
+#| msgid "Complete"
+msgid "Completed"
+msgstr "Terminée"
+
+msgid "Delete To-Do Item"
+msgstr "Supprimer la tâche"
+
+msgid "Description (optional)"
+msgstr "Description (facultative)"
+
+msgid "Drag to sort"
+msgstr "Faites glisser pour trier"
+
+msgid "Edit To-Do Item"
+msgstr "Modifier la tâche"
+
+msgid "Last edit %s"
+msgstr "Dernière modification le %s"
+
+msgid "Left side of window"
+msgstr "Côté gauche de la fenêtre"
+
+#| msgid "Mark As Complete"
+msgid "Mark As Completed"
+msgstr "Marquer comme terminée"
+
+msgid "No additional content was provided."
+msgstr "Aucun contenu complémentaire n’a été fourni."
+
+msgid "Pending completion"
+msgstr "En attente d’achèvement"
+
+#| msgid ""
+#| "Please <a href=\"%s\" target=\"_blank\">rate the plugin ★★★★★</a> to help "
+#| "keep it up-to-date & maintained. Thank you!"
+msgid ""
+"Please <a href=\"%s\" target=\"_blank\" rel=\"noopener\">rate the plugin "
+"★★★★★</a> to help keep it up-to-date & maintained. Thank you!"
+msgstr ""
+"Merci de <a href=\"%s\" target=\"_blank\" rel=\"noopener\">donner une note "
+"★★★★★ à l’extension</a> pour aider à la garder maintenue et à jour !"
+
+msgid "Position:"
+msgstr "Position :"
+
+msgid "Recently added"
+msgstr "Récemment ajoutée"
+
+msgid "Recently edited"
+msgstr "Récemment modifiée"
+
+msgid "Right side of window"
+msgstr "Côté droit de la fenêtre"
+
+msgid "Show list"
+msgstr "Afficher la liste"
+
+msgid "Show list on website (current user only)"
+msgstr "Afficher la liste sur le site (compte actuel uniquement)"
+
+msgid "Show on website (current user only)"
+msgstr "Afficher sur le site (compte actuel uniquement)"
+
+msgid "The items below were affected to you by other users"
+msgstr "Les tâches ci-dessous vous ont été affectées par d’autres comptes"
+
+msgid "This item was affected to you by %s"
+msgstr "Cette tâche vous a été affectée par %s"
+
+msgid ""
+"This item will be permanently deleted and cannot be recovered. Are you sure?"
+msgstr ""
+"Cette tâche sera définitivement supprimée et ne pourra pas être récupérée. "
+"Confirmez-vous ?"
+
+msgid "Title (required)"
+msgstr "Titre (obligatoire)"
+
+msgid "To-Do List"
+msgstr "Liste de tâches"
+
+msgid "Unknown user"
+msgstr "Compte inconnu"
+
+msgid "You affected this item to:"
+msgstr "Vous avez affecté cette tâche à :"
+
+#| msgid "You marked this item as complete"
+msgid "You marked this item as completed"
+msgstr "Vous avez indiqué que cette tâche est terminée"

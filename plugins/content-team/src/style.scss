@@ -1,0 +1,34 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .wp-block-create-block-content-team {
+	.team-vertical {
+		position: absolute;
+		height: 60%;
+		width: 2px;
+		// background: var(--accent-primary);
+		background:white;
+		top: 20%;
+		left: 50%;
+		transform: translate(-50%, 0px);
+	}
+	.team-horizontal {
+		position: absolute;
+		height: 2px;
+		width: 80%;
+		// background: var(--accent-primary);
+		background:white;
+		top: 46.5%;
+		left: 10%;
+		transform: translate(0%, -50%);
+	}
+	.team .bg-white.text-center.box-shadow {
+		padding-top: 90px !important;
+		width: 90% !important;
+		transform: translate(0%, -70px) !important;
+	}
+}

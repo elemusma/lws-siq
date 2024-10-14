@@ -1,0 +1,42 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-content-testimonials {
+	@media only screen and (min-width:991px) {
+		button.owl-prev,
+		button.owl-next {
+			position: absolute;
+			top: 20%;
+		}
+		button.owl-prev {
+			left:-4%;
+		}
+		button.owl-next {
+			right:-4%;
+		}
+	}
+	.owl-nav img {
+		width: 35px;
+	}
+    p {
+        color: #acacac;
+    }
+}
+
+// Import CSS files from owl-carousel directory
+// @import 'owl-carousel/owl.carousel.min.css';
+// .testimonial-carousel {
+//     background:red;
+// }
+// @import './owl-carousel/owl-carousel.css';
+// @import 'owl-carousel/owl-carousel';
+// @import 'owl-carousel/owl.carousel.min.css';
+// @import 'owl-carousel/owl.theme.default.min.css';
+
+// .testimonial-carousel {
+//     background:red;
+// }

@@ -1,0 +1,214 @@
+@keyframes rotate-infinite {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+@keyframes navSmoothTransition {
+0% {
+    top:-100%;
+}
+/* 10%{
+    top:-90%;
+} */
+100% {
+    top:0%;
+}
+}
+
+@keyframes navAnimation {
+    from {
+        top:-100%;
+    }
+    to {
+        top:0;
+    }
+}
+
+.header-nav {
+    position:relative;
+}
+.header-nav.active {
+    position:fixed;
+    animation: navAnimation .75s linear;
+}
+.header-nav.inactive {
+    transition:all .5s ease-in-out;
+    position:relative;
+    animation: navAnimationInactive 1s linear;
+}
+
+ul.menu.menu-secondary-nav-top li a {
+    font-size: 12px;
+    color: black;
+    padding: 0 5px;
+}
+ul.menu.menu-secondary-nav-top li:hover a {
+    color: var(--accent-secondary);
+}
+ul.menu.menu-secondary-nav-top li {
+    padding: 0;
+}
+ul.menu.menu-secondary-nav-top li:first-child a {
+    padding-left:9px;
+}
+
+header.position-fixed.scroll{
+	animation: navSmoothTransition .5s linear;
+}
+
+.login-logout:hover svg {
+    fill:var(--accent-secondary) !important;
+}
+
+.txt-logo {
+animation: rotate-infinite 35s linear infinite; /* Adjust the duration as needed */
+transform-origin:center;
+}
+  
+.no-link a {
+    pointer-events: none;
+}
+
+ul.menu li {
+    padding: 9px 0px;
+    position: relative;
+}
+
+ul.menu>li.menu-item-has-children {
+    margin-right: 18px;
+}
+
+.dropdown-arrow {
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    -webkit-clip-path: polygon(100% 0, 0 0, 50% 100%);
+    -ms-clip-path: polygon(100% 0, 0 0, 50% 100%);
+    width: 9px;
+    height: 9px;
+    top: 45%;
+    right: 0;
+    transform: translate(9px, -50%);
+}
+
+@media screen and (max-width:1199px) {
+    .dropdown-arrow {
+        top: 12px;
+        transform: translate(-5px, 0%);
+        width: 18px;
+        height: 15px;
+    }
+}
+
+@media only screen and (min-width:1199px){
+ul.menu>li>a {
+    padding: 0px 9px;
+}
+}
+
+/* header a {
+    font-size: 12px;
+} */
+
+ul.menu>li>a {
+    color: white;
+    text-decoration:none;
+    transition:all .25s ease-in-out;
+    cursor:pointer;
+    font-family: 'aspirablack';
+    font-style:italic;
+    font-size: 20px;
+}
+
+a svg,
+a .cls-1.search {
+    transition:all .25s ease-in-out;
+}
+a:hover svg,
+a:hover .cls-1.search {
+    fill:var(--accent-secondary) !important;
+}
+#logoMain .cls-3 {
+    transition:all .25s ease-in-out;
+}
+#logoMain:hover .cls-3 {
+    fill: var(--accent-secondary);
+}
+ul.menu>li.current-menu-item>a,ul.menu>li>a:hover,
+.current_page_parent>a,
+#menu-main-menu>.current_page_item>a,
+.current_page_parent>.current-menu-item>a,
+.current-page-ancestor>a,
+#menu-main-menu .current_page_ancestor .current_page_item>a {
+    text-decoration: none;
+    color:var(--accent-secondary);
+}
+
+@media screen and (min-width:1200px) {
+    header ul.menu li:first-child a {
+        border: none;
+        padding-left: 0;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    ul.sub-menu {
+        padding: 0 20px;
+        position: absolute;
+        background: var(--accent-primary);
+        z-index: 10;
+        height: 0;
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+        min-width: 100%;
+        top: 100%;
+    }
+}
+
+/* @media screen and (max-width:1199px) {
+    ul.sub-menu {
+        height:100%!important;
+    }
+} */
+
+ul.sub-menu, ul.sub-menu * {
+    list-style: none;
+    overflow: hidden;
+    transition: all .25s ease-in-out;
+    text-align: left;
+}
+
+ul.sub-menu li {
+    white-space: nowrap;
+}
+
+ul.sub-menu li a {
+    color: white;
+}
+ul.sub-menu li a:hover {
+    color: var(--accent-secondary);
+}
+
+@media only screen and (max-width:1199px) {
+    ul.sub-menu {
+        height: unset !important;
+    }
+
+    ul.sub-menu li a {
+        color: white;
+    }
+}
+
+/* for blog and other pages */
+.page-template-blog header#header,
+.single header#header,
+.archive header#header,
+.category header#header,
+.tag header#header,
+.search header#header {
+    background: #f3be7c;
+}
+
+/* website specific css */

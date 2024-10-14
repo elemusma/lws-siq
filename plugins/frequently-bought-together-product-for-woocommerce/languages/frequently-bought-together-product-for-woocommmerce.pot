@@ -1,0 +1,99 @@
+# Copyright (C) 2022 
+# This file is distributed under the same license as the Frequently Bought Together Product For Woocommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Frequently Bought Together Product For Woocommerce 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/frequently-bought-together-product-for-woocommmerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-06-18T10:22:44+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: frequently-bought-together-product-for-woocommmerce\n"
+
+#. Plugin Name of the plugin
+msgid "Frequently Bought Together Product For Woocommerce"
+msgstr ""
+
+#. Description of the plugin
+msgid "This plugin allows create Frequently Bought Together Product For Woocommerce  plugin."
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:17
+msgid "General Setting"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:24
+msgid "Positions for layout 1"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:36
+msgid "Positions for layout 2"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:51
+msgid "Default Products"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:65
+msgid "Change quantity in cart page"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:77
+msgid "Check products default"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:89
+msgid "Add to Cart Button Text"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:98
+msgid "Total amount Text translate"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:107
+msgid "Additional Amount Text translate"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:116
+msgid "This Item Text translate"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:125
+msgid "Frequently Bought Together Heading color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:134
+msgid "Price for all Text color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:143
+msgid "Additional Amount text Color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:152
+msgid "Add to cart background color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:161
+msgid "Add to cart text color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:170
+msgid "Discount Badge text color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:179
+msgid "Discount Badge Background color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:188
+msgid "Regular Price color"
+msgstr ""
+
+#: main/backend/fbtpfw-backend.php:297
+msgid "Woo Frequently Bought Together is enabled but not effective. It requires WooCommerce."
+msgstr ""

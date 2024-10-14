@@ -1,0 +1,26 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .wp-block-create-block-content-view-our-work {
+
+	@media only screen and (min-width:991px) {
+		button.owl-prev,
+		button.owl-next {
+			position: absolute;
+			top: 35%;
+		}
+		button.owl-prev {
+			left:-7%;
+		}
+		button.owl-next {
+			right:-7%;
+		}
+	}
+	.owl-nav img {
+		width: 35px;
+	}
+}

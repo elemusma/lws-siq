@@ -1,0 +1,26 @@
+section.position-relative {
+    padding-top: 0px !important;
+}
+
+h1,h2 {
+	line-height:2 !important;
+}
+
+nav.woocommerce-MyAccount-navigation {
+    background: #f7f7f7;
+    border-radius: 5px;
+}
+
+a.woocommerce-button.button.view {
+    background: var(--accent-primary);
+    color: white;
+    margin-right: 5px;
+}
+
+a.woocommerce-button.button.order-again {
+    background: var(--accent-secondary);
+    color: black;
+}
+a.woocommerce-button.button.pay {
+    margin-right: 5px;
+}

@@ -1,0 +1,64 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-content-tabs {
+  /* start of tabs */
+  /* end of tabs */
+}
+.wp-block-create-block-content-tabs .content-area:not(.activate) {
+  bottom: 0;
+  pointer-events: none;
+}
+.wp-block-create-block-content-tabs .tab-title {
+  background: #ddd;
+  color: #868686;
+  font-family: "proxima_novabold";
+  border-radius: 0;
+  padding: 30px 40px;
+  font-weight: 700;
+  position: relative;
+  margin: 0px;
+  text-align: center;
+  /* border: 1px solid #dee2e6 !important; */
+}
+.wp-block-create-block-content-tabs .tab-title.active {
+  pointer-events: none;
+  background: #2b322a;
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .wp-block-create-block-content-tabs .btn.tab-title:after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    background: white;
+    top: 50%;
+    right: -30%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .wp-block-create-block-content-tabs .btn.tab-title:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background: white;
+    top: 50%;
+    right: 0%;
+    transform: translate(50%, -50%);
+    z-index: 1;
+  }
+}
+.wp-block-create-block-content-tabs .btn.tab-title:last-child:after,
+.wp-block-create-block-content-tabs .btn.tab-title:last-child:before {
+  content: none;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
