@@ -67,7 +67,6 @@ export default function save( { attributes } ) {
 											/>
 										) }
 										<div className='bg-white text-center box-shadow' style={{transform:'translate(0px, -70px)', width:'80%',margin:'auto',borderRadius:'25px',padding:'25px 15px;'}}>
-										<RawHTML>{ column.code_block }</RawHTML>
 										<h3 className={`h6`} style={{marginTop:'0px'}}>
 											<RichText.Content
 												value={ column.title }
@@ -78,6 +77,7 @@ export default function save( { attributes } ) {
 												value={ column.content }
 											/>
 										</p>
+										<RawHTML>{ column.code_block }</RawHTML>
 										</div>
 									</div>
 								</div>

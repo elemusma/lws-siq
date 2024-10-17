@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: woocommerce product addons, WooCommerce product fields, woocommerce product options, woocommerce custom fields, product add-ons for woocommerce
 Requires at least: 6.4
 Tested up to: 6.6
-Stable tag: 4.14.1
+Stable tag: 4.14.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -118,6 +118,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Product page with different options (5/5)
 
 == Changelog ==
+
+= 4.14.2 – Released on 02 October 2024 =
+
+* Update: YITH plugin framework
+* Fix: Float option price && option sale price
 
 = 4.14.1 – Released on 12 September 2024 =
 

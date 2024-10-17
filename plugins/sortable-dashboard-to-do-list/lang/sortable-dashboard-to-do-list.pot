@@ -38,7 +38,7 @@ msgstr ""
 msgid "Added %s"
 msgstr ""
 
-msgid "Last edit %s"
+msgid "Last edit %s by %s"
 msgstr ""
 
 msgid "Recently added"
@@ -111,4 +111,7 @@ msgid "You marked this item as completed"
 msgstr ""
 
 msgid "Drag to sort"
+msgstr ""
+
+msgid "Allow affected users to edit the task description"
 msgstr ""

@@ -143,7 +143,7 @@ if ( ! class_exists( 'YITH_WAPO_Cart' ) ) {
 
 								$info = yith_wapo_get_option_info( $addon_id, $option_id, false );
 
-								if ( 'product' === $info['addon_type'] ) {
+								if ( isset( $info['addon_type'] ) && 'product' === $info['addon_type'] ) {
 									$product_id = $info['product_id'];
 									$product    = wc_get_product( $product_id );
                                     $quantity   = $post_data['yith_wapo_product_qty'][ $addon_option ] ?? $quantity;
@@ -540,16 +540,14 @@ if ( ! class_exists( 'YITH_WAPO_Cart' ) ) {
                         if ( 'yes' === $first_options_selected && 0 < $first_options_qty && $first_free_options_count < $first_options_qty ) {
                             $first_free_options_count ++;
                         } else {
-                            if ( $addon_price !== 0 || $addon_sale_price >= 0 ) {
-                                if ( $addon_sale_price >= 0 ) {
-                                    $option_price = $addon_sale_price;
-                                } else {
-                                    $option_price = $addon_price;
-                                }
+                            if ( $addon_sale_price !== '' && $addon_sale_price >= 0 ) {
+                                $option_price = $addon_sale_price;
+                            } elseif ( $addon_price !== 0 ) {
+                                $option_price = $addon_price;
                             }
                         }
 
-                        $addon_totals += $option_price;
+                        $addon_totals += (float) $option_price;
 
                     }
                 }

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH WooCommerce Products Add-ons\n"
 "Report-Msgid-Bugs-To: YITH <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2024-09-12 11:19:23+00:00\n"
+"POT-Creation-Date: 2024-10-02 07:45:12+00:00\n"
 "PO-Revision-Date: 2021-07-21 17:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -285,13 +285,13 @@ msgid "Configure style options to customize the add-ons you create."
 msgstr ""
 
 #. translators: [FRONT] Label shown on cart for add-on type Upload
-#: includes/class-yith-wapo-cart.php:1413
+#: includes/class-yith-wapo-cart.php:1411
 msgid "Attached file"
 msgstr "Pièce jointe"
 
 #. translators: [ADMIN] Message added to order notes when add-on type Product
 #. has stock
-#: includes/class-yith-wapo-cart.php:1491
+#: includes/class-yith-wapo-cart.php:1489
 msgid "Stock levels reduced for addons type product:"
 msgstr ""
 
@@ -1719,20 +1719,20 @@ msgid ""
 "already have %2$s in your cart."
 msgstr ""
 
-#: includes/class-yith-wapo-cart.php:634
+#: includes/class-yith-wapo-cart.php:632
 #, fuzzy
 msgctxt "[FRONT] Label shown on YITH Bundle products when is added to cart."
 msgid "Base price"
 msgstr "Prix de base"
 
-#: includes/class-yith-wapo-cart.php:742 includes/class-yith-wapo-cart.php:888
+#: includes/class-yith-wapo-cart.php:740 includes/class-yith-wapo-cart.php:886
 #: includes/yith-wapo-functions.php:151 includes/yith-wapo-functions.php:153
 #, fuzzy
 msgctxt "[FRONT] Show it in the cart page if the add-on has not a label set"
 msgid "Option"
 msgstr "Options"
 
-#: includes/class-yith-wapo-cart.php:961
+#: includes/class-yith-wapo-cart.php:959
 #, fuzzy
 msgctxt "[FRONT] Default label on archive pages if the product has add-ons"
 msgid "Select options"

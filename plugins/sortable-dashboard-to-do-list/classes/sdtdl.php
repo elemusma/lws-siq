@@ -4,7 +4,7 @@ namespace SDTDL;
 if (!defined('ABSPATH')) {
     exit;
 }
-define('SDTDL_VERSION', '2.0');
+define('SDTDL_VERSION', '2.1.3');
 
 class SDTDL
 {
@@ -13,7 +13,7 @@ class SDTDL
     private $_user_id;
     private $_options;
     private $_to_do_items = ['own' => [], 'affected' => []];
-    private $_db_version = 2;
+    private $_db_version = 4;
     private $_user_option;
     private $_is_network_admin;
     private $_user_can_affect_to_roles;
@@ -73,12 +73,7 @@ class SDTDL
         $this->_is_network_admin = is_network_admin();
         $this->_user_id = get_current_user_id();
         $this->_options = $this->_get_option();
-        if ($this->_get_db_version() == 0) {
-            $this->_create_db_table();
-        }
-        if ($this->_get_db_version()<2){
-            $this->_upgrade_db('2');
-        }
+        $this->_maybe_upgrade_db();
         $user = wp_get_current_user();
         $user_role = $user->roles[0];
         if (is_multisite() || in_array($this->_user_id, apply_filters('sdtdl_users_not_allowed_to_affect', []))) {
@@ -86,8 +81,9 @@ class SDTDL
         } elseif (current_user_can('administrator')) {
             $roles = wp_roles();
             $admin_roles = [];
+            $min_user_capability = apply_filters('sdtdl_min_user_capability', 'edit_posts');
             foreach ($roles->roles as $role_name => $role_data) {
-                if (isset($role_data['capabilities'][apply_filters('sdtdl_min_user_capability', 'edit_posts')]) && $role_data['capabilities'][apply_filters('sdtdl_min_user_capability', 'edit_posts')] === true) {
+                if (isset($role_data['capabilities'][$min_user_capability]) && $role_data['capabilities'][$min_user_capability] === true) {
                     $admin_roles[] = $role_name;
                 }
             }
@@ -247,14 +243,14 @@ class SDTDL
                 $affected_to = self::get_affected_to_user_ids_array($results['affected_to']);
                 $completed_by = unserialize($results['completed_by']);
                 $completed_by = array_keys($completed_by);
-                $diff=array_diff($affected_to,$completed_by);
-                if (!$diff){
+                $diff = array_diff($affected_to, $completed_by);
+                if (!$diff) {
                     $wpdb->delete($wpdb->prefix . 'sdtdl', ['uniq_id' => $id], []);
-                }else{//Remove the affected user from the affected list
-                    $key=array_search($this->_user_id, $affected_to);
+                } else {//Remove the affected user from the affected list
+                    $key = array_search($this->_user_id, $affected_to);
                     unset($affected_to[$key]);
-                    $affected_to=self::get_affected_to_user_ids_string($affected_to);
-                    $data=['affected_to'=>$affected_to];
+                    $affected_to = self::get_affected_to_user_ids_string($affected_to);
+                    $data = ['affected_to' => $affected_to];
                     $wpdb->update($wpdb->prefix . 'sdtdl', $data, ["uniq_id" => $id]);
                 }
             }
@@ -292,7 +288,7 @@ class SDTDL
         $id = sanitize_text_field($_REQUEST['data']['content']['id']);
         $content = self::sanitize_item_content($_REQUEST['data']['content']['content']);
         $data = ["added" => $timestamp, "title" => $title, "uniq_id" => $id, "content" => $content, "created_by" => $this->_user_id];
-        $data = $this->_maybe_add_affected_data($data);
+        $data = $this->_maybe_add_affected_data($data,$this->_user_id);
         $inserted = $wpdb->insert($wpdb->prefix . 'sdtdl', $data);
         if ($inserted) {
             $this->_update_item_option($id);
@@ -312,40 +308,58 @@ class SDTDL
         $edited = (int)$_REQUEST['data']['content']['last_edited'];
         $data = ["title" => $title, "content" => $content, "last_edited" => $edited];
         $response['time'] = $this->_get_formatted_date("edit");
+        $where = ["uniq_id" => $id, "created_by" => $this->_user_id];
         if ($changed !== 'false') {
             $data['last_edited'] = $edited;
+            $user_data = get_userdata($this->_user_id);
+            $data['last_edited_by'] = $user_data->display_name;
         }
-        $data = $this->_maybe_add_affected_data($data);
-        $updated = $wpdb->update($wpdb->prefix . 'sdtdl', $data, ["uniq_id" => $id, "created_by" => $this->_user_id]);
+        //Are other people allowed to edit it?
+        $sql = "SELECT edition_allowed, affected_to, created_by FROM " . $wpdb->prefix . "sdtdl WHERE uniq_id='$id'";
+        $results = $wpdb->get_results($sql, ARRAY_A)[0];
+        $affected_to = self::get_affected_to_user_ids_array($results['affected_to']);
+        if ($results['edition_allowed'] == 1 && $results['created_by'] != $this->_user_id) {
+            if (!in_array($this->_user_id, $affected_to)) {
+                wp_send_json_error();;
+            }
+            unset($where['created_by']);
+            //do not allow to edit the title
+            unset($data['title']);
+        }
+        $data = $this->_maybe_add_affected_data($data, $results['created_by']);
+        $updated = $wpdb->update($wpdb->prefix . 'sdtdl', $data, $where);
         if ($updated) {
-            $this->_update_item_option($id, "update");
+            if ($results['created_by'] == $this->_user_id) {
+                $this->_update_item_option($id, "update");
+            }
             wp_send_json_success($response);
         }
         wp_send_json_error();
     }
 
-    private function _maybe_add_affected_data($data): array
+    private function _maybe_add_affected_data($data, $created_by): array
     {
-        $affected_to = sanitize_text_field($_REQUEST['data']['content']['affected']['to'] ?? '');
-        $affected_by = (int)($_REQUEST['data']['content']['affected']['by'] ?? 0);
-        if ($affected_by == $this->_user_id) {
-            //We need to make sure the current user has the ability to affect to all the other users (prevent passing unwanted user ids from ajax call)
-            $data['affected_to'] = $this->_users_authorized_to_affect_to($affected_to);
-            $id = sanitize_text_field($_REQUEST['data']['content']['id']);
-            //If we unaffect someone that had completed the task, we need to remove it from completion, to allow for reaffectation.
-            $this->_maybe_update_completed_by($affected_to, $id);
+        if ($created_by != $this->_user_id) {
+            return $data;
         }
+        $affected_to = sanitize_text_field($_REQUEST['data']['content']['affected']['to'] ?? '');
+        //We need to make sure the current user has the ability to affect to all the other users (prevent passing unwanted user ids from ajax call)
+        $data['affected_to'] = $this->_users_authorized_to_affect_to($affected_to);
+        $data['edition_allowed'] = (bool)$_REQUEST['data']['content']['affected']['edition_allowed'];
+        $id = sanitize_text_field($_REQUEST['data']['content']['id']);
+        //If we unaffect someone that had completed the task, we need to remove it from completion, to allow for reaffectation.
+        $this->_maybe_update_completed_by($affected_to, $id);
         return $data;
     }
 
-    private static function get_affected_to_user_ids_array($affected_to):array
+    private static function get_affected_to_user_ids_array($affected_to): array
     {
         return explode(',', str_replace(['{', '}'], '', $affected_to));
     }
 
     private static function get_affected_to_user_ids_string($affected_to): string
     {
-        if (!$affected_to){
+        if (!$affected_to) {
             return '';
         }
         return '{' . implode('},{', $affected_to) . '}';
@@ -387,7 +401,7 @@ class SDTDL
         global $wpdb;
         $sql = 'SELECT completed_by FROM ' . $wpdb->prefix . 'sdtdl WHERE uniq_id=\'' . $id . '\'';
         $results = $wpdb->get_results($sql, ARRAY_A);
-        if ($results[0]['completed_by']) {
+        if (isset($results[0]['completed_by']) && $results[0]['completed_by']) {
             $completed_by = unserialize($results[0]['completed_by']);
             foreach ($completed_by as $user_id => $timestamp) {
                 if (!in_array($user_id, $affected_to)) {
@@ -454,7 +468,8 @@ class SDTDL
             $formatted_date = sprintf(esc_html__("Added %s", 'sortable-dashboard-to-do-list'), $date);
         } else {
             $icon_class = "dashicons-edit";
-            $formatted_date = sprintf(esc_html__("Last edit %s", 'sortable-dashboard-to-do-list'), $date);
+            $user_data=get_userdata($this->_user_id);
+            $formatted_date = sprintf(esc_html__("Last edit %s by %s", 'sortable-dashboard-to-do-list'), $date,$user_data->display_name);
         }
         return ["full" => '<span class="dashicons ' . $icon_class . '"></span>' . $formatted_date, "short" => $formatted_date];
     }
@@ -527,21 +542,21 @@ class SDTDL
         $sql = 'SELECT * FROM ' . $wpdb->prefix . 'sdtdl WHERE affected_to LIKE \'%{' . $user_id . '}%\'';
         $results = $wpdb->get_results($sql, ARRAY_A);
         foreach ($results as $result) {
-            $affected_to=self::get_affected_to_user_ids_array($result['affected_to']);
-            $key=array_search($user_id, $affected_to);
+            $affected_to = self::get_affected_to_user_ids_array($result['affected_to']);
+            $key = array_search($user_id, $affected_to);
             unset($affected_to[$key]);
-            $affected_to=self::get_affected_to_user_ids_string($affected_to);
-            $completed_by=maybe_unserialize($result['completed_by']);
-            if ($completed_by){
+            $affected_to = self::get_affected_to_user_ids_string($affected_to);
+            $completed_by = maybe_unserialize($result['completed_by']);
+            if ($completed_by) {
                 unset($completed_by[$user_id]);
-                if ($completed_by){
-                    $completed_by=serialize($completed_by);
-                }else{
-                    $completed_by='';
+                if ($completed_by) {
+                    $completed_by = serialize($completed_by);
+                } else {
+                    $completed_by = '';
                 }
             }
-            $data=['affected_to'=>$affected_to,'completed_by'=>$completed_by];
-            $wpdb->update($wpdb->prefix . 'sdtdl',$data, ["uniq_id" => $result['uniq_id']]);
+            $data = ['affected_to' => $affected_to, 'completed_by' => $completed_by];
+            $wpdb->update($wpdb->prefix . 'sdtdl', $data, ["uniq_id" => $result['uniq_id']]);
         }
     }
 
@@ -554,6 +569,22 @@ class SDTDL
         });
     }
 
+    private function _maybe_upgrade_db(): void
+    {
+        if ($this->_get_db_version() == 0) {
+            $this->_create_db_table();
+        }
+        if ($this->_get_db_version() < 2) {
+            $this->_upgrade_db('2');
+        }
+        if ($this->_get_db_version()<4){
+            $this->_upgrade_db('4');
+        }
+        if ($this->_get_db_version()!=$this->_db_version) {
+            $this->_update_db_version();
+        }
+    }
+
     private function _get_db_version()
     {
         $options = $this->_get_option(true);
@@ -562,7 +593,7 @@ class SDTDL
 
     private function _update_db_version(): void
     {
-        $options = $this->_get_option('true');
+        $options = $this->_get_option(true);
         $options['db_version'] = $this->_db_version;
         $this->_update_option($options, true);
     }
@@ -577,16 +608,28 @@ class SDTDL
         $result = maybe_create_table($wpdb->prefix . $tablename, $sql);
         if ($result) {
             $this->_migrate_to_db();
-            $this->_update_db_version();
         }
     }
 
     private function _upgrade_db($version)
     {
-        if ($version=='2'){
-            global $wpdb;
-            $wpdb->query("ALTER TABLE ".$wpdb->prefix."sdtdl ADD affected_to VARCHAR(255) NOT NULL, ADD completed_by VARCHAR(255) NOT NULL");
-            $this->_update_db_version();
+        global $wpdb;
+        if ($version == '2') {
+            $wpdb->query("ALTER TABLE " . $wpdb->prefix . "sdtdl ADD affected_to VARCHAR(255) NOT NULL, ADD completed_by VARCHAR(255) NOT NULL");
+            return;
+        }
+        if ($version=='4'){
+            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            $sql="ALTER TABLE " . $wpdb->prefix . "sdtdl ADD last_edited_by VARCHAR(255)";
+            maybe_add_column($wpdb->prefix . "sdtdl","last_edited_by",$sql);
+            $sql="ALTER TABLE " . $wpdb->prefix . "sdtdl ADD edition_allowed TINYINT(1) DEFAULT 0";
+            maybe_add_column($wpdb->prefix . "sdtdl","edition_allowed",$sql);
+            $sql="SELECT * FROM ".$wpdb->prefix."sdtdl";
+            $results = $wpdb->get_results($sql, ARRAY_A);
+            foreach ($results as $result) {
+                $user=get_userdata($result['created_by']);
+                $wpdb->update($wpdb->prefix . 'sdtdl', ["last_edited_by" => $user->display_name], ["uniq_id" => $result['uniq_id']]);
+            }
         }
     }
 

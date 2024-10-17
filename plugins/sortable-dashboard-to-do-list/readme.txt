@@ -1,19 +1,18 @@
 === Sortable Dashboard To-Do List ===
 Contributors: Jeffinho2016,jfgmedia
-Tags: dashboard, to-do, task, list, admin
+Tags: dashboard, todo list, task, list, admin
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 2.0
+Stable tag: 2.1.3
 Requires PHP: 7.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a to-do list to the WordPress dashboard.
+Adds a sortable to-do list widget to your WP dashboard. Useful for developers, content writers, and team tasks. Easily affect tasks to other users.
 
 == Description ==
 
-The plugin adds a sortable to-do list to your WP dashboard. This can be useful for developers, or even for content writers.
-With the possibility to affect tasks to other users, it's like having your own mini Trello directly on your dashboard!
+The plugin adds a sortable to-do list to your WP dashboard. This can be useful for developers, or even for content writers. With the possibility to affect tasks to other users, it's like having your own mini Trello directly on your dashboard!
 
 ### NEW! Task Affectation ###
 <ul>
@@ -21,25 +20,28 @@ With the possibility to affect tasks to other users, it's like having your own m
 To-do list items can be affected to other users
 </li>
 <li>
-Users with affected items can easily see by whom they were affected, and easily flag the items as completed
+Users with affected tasks can easily see by whom they were affected, and easily flag them as completed
 </li>
 <li>
-Users who affect items can easily see which users have completed them, and which still haven't
+Users who affect tasks can easily see which users have completed them, and which still haven't
 </li>
 <li>
-Affectation ability depends on the user role
+Users who affect tasks can decide if they want affected users to be able to edit the task description
+</li>
+<li>
+Affectation ability depends on the current user role
 </li>
 <li>
 By default:
 <ul>
 <li>
-Administrators can affect items to all users with the "edit_posts" capability
+Administrators can affect tasks to all users with the "edit_posts" capability
 </li>
 <li>
-Editors can affect items to editors, contributors, and authors
+Editors can affect tasks to editors, contributors, and authors
 </li>
 <li>
-Other user roles can only affect items to other users with the same role
+Other user roles can only affect tasks to other users with the same role
 </li>
 </ul>
 </li>
@@ -47,7 +49,7 @@ Other user roles can only affect items to other users with the same role
 This feature is currently not activated for multisite setups
 </li>
 <li>
-4 new WP filters to provide further control on affectation rights
+4 WP filters to provide further control on affectation rights
 </li>
 </ul>
 
@@ -93,13 +95,13 @@ Possibility to decide to not show some to-do items on the website.
 
 **Manage affectation rights:**
 
-"sdtdl_users_not_allowed_to_affect" to prevent some users to be able to affect items, by returning an array of user IDs: `add_filter('sdtdl_users_not_allowed_to_affect',function(){return['3','6','8'];})`
+"sdtdl_users_not_allowed_to_affect" to prevent some users to be able to affect items, by returning an array of user IDs: `add_filter('sdtdl_users_not_allowed_to_affect',function(){return ['3','6','8'];})`
 
-"sdtdl_[user_role]_can_affect_to" to allow a specific user role to affect items to other roles, by returning an array of roles: `add_filter('sdtdl_editor_can_affect_to',function(){return['administrator','editor'];})`
+"sdtdl_[user_role]_can_affect_to" to allow a specific user role to affect items to other roles, by returning an array of roles: `add_filter('sdtdl_editor_can_affect_to',function(){return ['administrator','editor'];})`
 
-"sdtdl_[user_role]_cannot_affect_to_users" to prevent specific roles from affecting tasks to specific users, by returning an array of user IDs: `add_filter('sdtdl_[user_role]_cannot_affect_to_users',function($current_user_id){return['2','4'];})`
+"sdtdl_[user_role]_cannot_affect_to_users" to prevent specific roles from affecting tasks to specific users, by returning an array of user IDs: `add_filter('sdtdl_[user_role]_cannot_affect_to_users',function($current_user_id){return ['2','4'];})`
 
-"sdtdl_never_affect_task_to_users" to prevent specific users from ever being affected any tasks, by return an array of user IDs: `add_filter('sdtdl_never_affect_task_to_users',function(){return['1'];})`
+"sdtdl_never_affect_task_to_users" to prevent specific users from ever being affected any tasks, by return an array of user IDs: `add_filter('sdtdl_never_affect_task_to_users',function(){return ['1'];})`
 
 Administrators can affect tasks to all user roles with the "edit_posts" capability, but this can also be altered with the previous 3 filters.
 
@@ -131,8 +133,22 @@ It will have no impact on site speed whatsoever. The plugin only launches for us
 
 == Changelog ==
 
+= 2.1.3 =
+* CSS opacity fix
+* PHP warning fix
+
+= 2.1.2 =
+* Minor display-related js fixes
+
+= 2.1.1 =
+* Db migration fix for new users
+
+= 2.1 =
+* It is now possible to allow users with affected items to edit the description of the item
+* Addition of the "sdtdl-min-description-rows" filter, to change the default size of the description text area
+
 = 2.0 =
-* It is now possible to affect items to other users. Read the description tab for more info
+* It is now possible to affect items to other users. Read the Details tab for more info
 
 = 1.3.1 =
 * Fix: Potential crash for new users
