@@ -20,7 +20,21 @@ input.gform_button.button:hover {
   background-color: var(--accent-primary-hover);
   border-color: var(--accent-primary-hover);
 }
-
+.ginput_container.ginput_container_fileupload {
+  margin:0 !important;
+}
+.ginput_container_fileupload input {
+  box-shadow:none !important;
+  padding-left:0px;
+}
+.modal input.gform_button.button, 
+.customer-provided-apparel input.gform_button.button
+{
+  margin-bottom: 0 !important;
+}
+.customer-provided-apparel .ginput_container.ginput_container_fileupload {
+  margin:auto !important;
+}
 input#input_2_8 {
   box-shadow: none !important;
 }
@@ -30,6 +44,17 @@ input#input_2_8 {
   align-items: center;
   max-width: 500px;
   margin: auto;
+}
+.ginput_container.ginput_container_fileupload span.gfield_description.gform_fileupload_rules {
+  margin-top: 0 !important;
+  padding-top: 0px !important;
+}
+.customer-provided-apparel .gchoice label {
+  margin: 0;
+}
+
+.customer-provided-apparel .ginput_container.ginput_container_checkbox {
+  padding-top: 20px;
 }
 
 /* .gform_footer.top_label {
