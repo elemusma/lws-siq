@@ -21,7 +21,7 @@ function parallaxEffect() {
     // header.classList.add('position-fixed');
     // header.classList.remove('position-relative');
 
-    if (scrollY < 599) {
+    if (scrollY < 199) {
         blankSpace.style.height = "0px";
         // logoMain.style.width = "75px"
         header.classList.add('position-relative');
@@ -30,7 +30,7 @@ function parallaxEffect() {
 		header.classList.remove('active');
 		// header.classList.remove('scroll');
         // blankSpace.style.height = (((header.offsetHeight)) + "px");
-    } else if (scrollY > 600) {
+    } else if (scrollY > 200) {
         // blankSpace.style.height = (((header.offsetHeight) + 10) + "px");
         // logoMain.style.width = "50px"
         blankSpace.style.height = (((header.offsetHeight)) + "px");

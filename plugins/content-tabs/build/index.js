@@ -105,6 +105,8 @@ function Edit({
         img_class: '',
         title: '',
         content: '',
+        content_class: 'position-relative text-left',
+        content_style: 'padding-left:25px;',
         code_block: ''
       }]
     });
@@ -419,6 +421,39 @@ function Edit({
                   onChange: content => updateTab(index, 'col_style', content.target.value)
                 })]
               })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'flex'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  paddingRight: '25px'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  style: {
+                    marginBottom: '0px'
+                  },
+                  children: "Content Class"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: tab.content_class,
+                  onChange: content => updateTab(index, 'content_class', content.target.value)
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  paddingRight: '25px'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  style: {
+                    marginBottom: '0px'
+                  },
+                  children: "Content Style"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: tab.content_style,
+                  onChange: content => updateTab(index, 'content_style', content.target.value)
+                })]
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               style: {
                 display: 'flex',
@@ -711,7 +746,9 @@ function save({
     alt,
     img_class,
     img_style,
-    content
+    content,
+    content_class,
+    content_style
   }) => {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: ``,
@@ -736,15 +773,13 @@ function save({
           }
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: `position-relative`,
-        style: {
-          paddingLeft: '25px'
-        },
+        className: content_class,
+        style: content_style,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           style: {
             margin: '0px'
           },
-          className: `text-left`,
+          className: ``,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
             value: content
           })
@@ -825,7 +860,7 @@ function save({
               let tabID = sanitizedID + '-' + index;
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
                 children: index == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: `content-area w-100 ${tabID} activate position-relative`,
+                  className: `content-area w-100 ${tabID} activate position-relative ${tab.content_class}`,
                   style: {
                     opacity: '1'
                   },
@@ -838,7 +873,7 @@ function save({
                     content: tab.content
                   })
                 }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: `content-area w-100 ${tabID} position-absolute`,
+                  className: `content-area w-100 ${tabID} position-absolute ${tab.content_class}`,
                   style: {
                     opacity: '0'
                   },

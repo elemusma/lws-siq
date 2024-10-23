@@ -182,6 +182,9 @@ include_once('lws-includes/iconic-delivery-times.php');
 // include_once('woocommerce/mods-checkout.php');
 include_once('woocommerce/mods-payment-methods.php');
 include_once('woocommerce/mods-main-content.php');
+
+// include_once('woocommerce/mods-search.php');
+
 include_once('woocommerce/wc-custom-tier-pricing-table.php');
 // include_once('woocommerce/mods-single-product.php');
 // include_once('woocommerce/woocommerce-before-shop-loop-item.php'); // this causes the zoom feature on product page to not work

@@ -37,8 +37,12 @@ a.bg-accent:hover {
 }
 
 a.bg-accent-secondary:hover {
-  background: var(--accent-primary);
+  background: var(--accent-secondary-hover);
 }
+
+/* a.bg-accent-secondary:hover * {
+  color:white;
+} */
 
 .bg-white {
   background: white;

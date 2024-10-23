@@ -12,12 +12,13 @@ Version: 1.0
     --accent-primary: #162764;
     --accent-primary-hover: #0B1432;
     --accent-secondary: #ffa900;
-    --accent-secondary-hover: #E09600;
+    --accent-secondary-hover: #FFC247;
     /* --light: #f9f9f9; */
     --light: #ebebeb;
     --light-secondary: #e8edec;
     --text-shadow: 1px 1px 3px black;
     --transition: all .25s ease-in-out;
+    --box-shadow: 0px 2px 3px rgba(0,0,0,.5);
   }
 
 @media only screen and (min-width:992px) {

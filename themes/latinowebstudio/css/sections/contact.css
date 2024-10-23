@@ -8,14 +8,16 @@ input.gform_button.button {
   max-width: 300px;
   width: 100%;
   margin: auto;
-  margin-bottom: -70px !important;
+  /* margin-bottom: -70px !important; */
   cursor: pointer;
   color: white;
   box-shadow: none !important;
   font-weight: bold;
   white-space: pre-wrap;
 }
-
+#gform_1 input#gform_submit_button_1 {
+  margin-bottom: -70px;
+}
 input.gform_button.button:hover {
   background-color: var(--accent-primary-hover);
   border-color: var(--accent-primary-hover);

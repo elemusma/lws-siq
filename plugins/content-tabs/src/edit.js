@@ -93,6 +93,8 @@ export default function Edit( { attributes, setAttributes } ) {
 					img_class:'',
 					title: '',
 					content: '',
+					content_class:'position-relative text-left',
+					content_style:'padding-left:25px;',
 					code_block: ''
 				},
 			],
@@ -421,6 +423,56 @@ export default function Edit( { attributes, setAttributes } ) {
 										updateTab(
 											index,
 											'col_style',
+											content.target.value
+										)
+									}
+								/>
+								</div>
+								{/* <div>
+								<p style={ { marginBottom: '0px' } }>
+									Tab ID
+								</p>
+								<input
+									type="text"
+									value={ tab.col_id }
+									onChange={ ( content ) =>
+										updateTab(
+											index,
+											'col_id',
+											content.target.value
+										)
+									}
+								/>
+								</div> */}
+								</div>
+								<div style={{display:'flex'}}>
+								<div style={{paddingRight:'25px'}}>
+								<p style={ { marginBottom: '0px' } }>
+									Content Class
+								</p>
+								<input
+									type="text"
+									value={ tab.content_class }
+									onChange={ ( content ) =>
+										updateTab(
+											index,
+											'content_class',
+											content.target.value
+										)
+									}
+								/>
+								</div>
+								<div style={{paddingRight:'25px'}}>
+								<p style={ { marginBottom: '0px' } }>
+									Content Style
+								</p>
+								<input
+									type="text"
+									value={ tab.content_style }
+									onChange={ ( content ) =>
+										updateTab(
+											index,
+											'content_style',
 											content.target.value
 										)
 									}

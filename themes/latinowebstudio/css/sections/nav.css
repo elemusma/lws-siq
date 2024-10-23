@@ -149,7 +149,7 @@ ul.menu>li.current-menu-item>a,ul.menu>li>a:hover,
 @media screen and (min-width:1200px) {
     header ul.menu li:first-child a {
         border: none;
-        padding-left: 0;
+        /* padding-left: 0; */
     }
 }
 
@@ -157,13 +157,14 @@ ul.menu>li.current-menu-item>a,ul.menu>li>a:hover,
     ul.sub-menu {
         padding: 0 20px;
         position: absolute;
-        background: var(--accent-primary);
+        background: white;
         z-index: 10;
         height: 0;
         overflow: hidden;
         transition: all .5s ease-in-out;
         min-width: 100%;
         top: 100%;
+        box-shadow: var(--box-shadow);
     }
 }
 
@@ -185,7 +186,7 @@ ul.sub-menu li {
 }
 
 ul.sub-menu li a {
-    color: white;
+    color: black;
 }
 ul.sub-menu li a:hover {
     color: var(--accent-secondary);

@@ -29,7 +29,7 @@ export default function save( { attributes } ) {
 		  .replace(/\s+/g, '-')                  // Replace spaces with dashes
 		  .replace(/-+/g, '-');                  // Avoid multiple dashes
 	  
-	const TabContent = ({ code_block, img, alt, img_class, img_style, content }) => {
+	const TabContent = ({ code_block, img, alt, img_class, img_style, content,content_class,content_style }) => {
 	return (
 		<div className={``}>
 			<RawHTML>{code_block}</RawHTML>
@@ -52,8 +52,8 @@ export default function save( { attributes } ) {
 				</div>
 			)}
 
-			<div className={`position-relative`} style={{ paddingLeft: '25px' }}>
-				<p style={{ margin: '0px' }} className={`text-left`}>
+			<div className={content_class} style={content_style}>
+				<p style={{ margin: '0px' }} className={``}>
 					<RichText.Content value={content} />
 				</p>
 			</div>
@@ -110,11 +110,13 @@ export default function save( { attributes } ) {
 
     return (
 		<>
+		{/* <div className={tab.col_class}> */}
 			{index == 0 ? (
 				<p id={tabID} className={`d-block btn tab-title active ${tab.col_class}`} style={{ cursor: 'pointer' }}><RichText.Content value={tab.title} /></p>
 			) :
 			<p id={tabID} className={`d-block btn tab-title ${tab.col_class}`} style={{ cursor: 'pointer' }}><RichText.Content value={tab.title} /></p>
 		}
+		{/* </div> */}
 	</>
     );
   })
@@ -131,7 +133,7 @@ export default function save( { attributes } ) {
 	return (
 		<>
 		{index == 0 ? (
-			<div className={`content-area w-100 ${tabID} activate position-relative`} style={{opacity: '1'}}>
+			<div className={`content-area w-100 ${tabID} activate position-relative ${tab.content_class}`} style={{opacity: '1'}}>
 				<TabContent 
 			code_block={tab.code_block}
 			img={tab.img}
@@ -142,7 +144,7 @@ export default function save( { attributes } ) {
 		/>
 			</div>
 			) :
-			<div className={`content-area w-100 ${tabID} position-absolute`} style={{opacity: '0'}}>
+			<div className={`content-area w-100 ${tabID} position-absolute ${tab.content_class}`} style={{opacity: '0'}}>
 				<TabContent 
 			code_block={tab.code_block}
 			img={tab.img}
