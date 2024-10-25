@@ -8,6 +8,14 @@ div#mobileMenu .modal-content {
 }
 
 @media screen and (max-width:1199px) {
+
+    input#s {
+        width:100% !important;
+    }
+    button.search-submit {
+        right: 1% !important;
+    }
+
     ul.menu li {
         padding: 9px 9px;
         position: relative;
@@ -46,7 +54,7 @@ div#mobileMenu .modal-content {
 
     .nav-toggle div div {
         height: 5px;
-        width: 45px;
+        width: 65px;
         margin: 4px auto;
         margin-right: 0;
         transition: all .75s ease-in-out;
