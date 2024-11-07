@@ -1,4 +1,4 @@
-let menuHeight = document.querySelector('ul#menu-main-menu');
+let menuHeight = document.querySelector('.nav ul#menu-main-menu');
 let navMenu = document.querySelector('#navItems');
 let navMenuToggle = document.querySelector('#navToggle');
 let navMenuOverlay = document.querySelector('#navMenuOverlay');
@@ -140,6 +140,7 @@ function clickMobile() {
         //     subMenuMobile.classList.add('another-class');
         // }
     }
+    console.log('subMenuMobile hello');
     function activeDropdownClicked() {
         // alert('clicked');
         // console.log(this);
@@ -149,16 +150,21 @@ function clickMobile() {
         // subMenuMobile = this.parentNode;
         // subMenuMobile = this.previousElementSibling;
         subMenuMobile = this.querySelector('.sub-menu');
+        console.log(subMenuMobile);
+        console.log('subMenuMobile hello');
+        alert('hello');
         // console.log(subMenuMobile);
         // this.classList.add('active-dropdown');
         if (!subMenuMobile.classList.contains('active-sub-menu')) {
             // alert('clicked to activate');
             subMenuMobile.classList.add('active-sub-menu');
             subMenuMobile.style.height = subMenuMobile.children[0].offsetHeight * subMenuMobile.children.length + 'px';
+            console.log('subMenuMobile hello');
         } else if (subMenuMobile.classList.contains('active-sub-menu')) {
             // alert('clicked to deactivate');
             subMenuMobile.classList.remove('active-sub-menu');
             subMenuMobile.style.height = '0px';
+            console.log('subMenuMobile hello');
         }
     }
 

@@ -266,17 +266,8 @@ echo '</a>';
 //   'menu_class'=>'menu d-flex mobile-hidden list-unstyled text-white text-uppercase mt-0 flex-wrap'
 // ));
 
-if ( in_array( 'client_gates_enterprises', $user_roles ) ) {
-wp_nav_menu(array(
-    'menu' => 'Shop New - Gates',
-    'menu_class'=>'menu d-flex mobile-hidden list-unstyled text-white text-uppercase mt-0 flex-wrap'
-));
-} else {
-  wp_nav_menu(array(
-    'menu' => 'Shop New - Public',
-    'menu_class'=>'menu d-flex mobile-hidden list-unstyled text-white text-uppercase mt-0 flex-wrap'
-));
-}
+echo get_template_part('partials/nav-shop-dynamic');
+// echo get_template_part('partials/dealer-menu');
 
 echo '</div>';
 

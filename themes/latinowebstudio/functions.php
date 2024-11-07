@@ -153,6 +153,14 @@ add_action('after_setup_theme', 'stitch_it_quick_menus');
 // // removes sidebar
 remove_action('woocommerce_sidebar','woocommerce_get_sidebar');
 
+function set_global_user_info() {
+    global $current_user, $user_roles;
+    
+    $current_user = wp_get_current_user();
+    $user_roles = $current_user->roles;
+}
+
+add_action('init', 'set_global_user_info');
 
 
 include_once('lws-includes/shortcode-type-writer.php');

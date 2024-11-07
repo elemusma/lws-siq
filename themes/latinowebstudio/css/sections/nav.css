@@ -103,7 +103,7 @@ ul.menu>li.menu-item-has-children {
 }
 
 @media only screen and (min-width:1199px){
-ul.menu>li>a {
+.nav ul.menu>li>a {
     padding: 0px 9px;
 }
 }
@@ -112,7 +112,7 @@ ul.menu>li>a {
     font-size: 12px;
 } */
 
-ul.menu>li>a {
+.nav ul.menu>li>a {
     color: white;
     text-decoration:none;
     transition:all .25s ease-in-out;
@@ -136,7 +136,7 @@ a:hover .cls-1.search {
 #logoMain:hover .cls-3 {
     fill: var(--accent-secondary);
 }
-ul.menu>li.current-menu-item>a,ul.menu>li>a:hover,
+.nav ul.menu>li.current-menu-item>a,.nav ul.menu>li>a:hover,
 .current_page_parent>a,
 #menu-main-menu>.current_page_item>a,
 .current_page_parent>.current-menu-item>a,
@@ -154,7 +154,7 @@ ul.menu>li.current-menu-item>a,ul.menu>li>a:hover,
 }
 
 @media screen and (min-width:1200px) {
-    ul.sub-menu {
+    .nav ul.sub-menu {
         padding: 0 20px;
         position: absolute;
         background: white;
