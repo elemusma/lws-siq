@@ -7,14 +7,14 @@ echo '<div class="container">';
 echo '<div class="row">';
 
 echo '<div class="col-lg-2 col-md-6 text-white">';
-echo '<div style="width:100%;max-width:105px;">';
-echo '<a href="' . home_url() . '" title="Stitch It Quick">';
-// echo wp_get_attachment_image(logoImg()['id'],'full','',[
-//     'class'=>'w-100 h-auto',
-// ]);
-echo logoSVG();
-echo '</a>';
-echo '</div>';
+// echo '<div style="width:100%;max-width:105px;">';
+// echo '<a href="' . home_url() . '" title="Stitch It Quick">';
+// // echo wp_get_attachment_image(logoImg()['id'],'full','',[
+// //     'class'=>'w-100 h-auto',
+// // ]);
+// echo logoSVG();
+// echo '</a>';
+// echo '</div>';
     echo '<div style="padding-bottom:25px;">';
         echo get_template_part('partials/si');
     echo '</div>';
@@ -22,17 +22,17 @@ echo '</div>';
 
 echo '<div class="col-lg-8 col-6 text-white d-md-flex align-items-center justify-content-center">';
 
-echo get_template_part('partials/nav-shop-dynamic');
+// echo get_template_part('partials/nav-shop-dynamic');
 
 wp_nav_menu(array(
     'menu' => 'New - Left',
     'menu_class'=>'menu d-flex list-unstyled text-white text-uppercase mt-0'
 ));
-// echo '<a href="' . home_url() . '" style="padding:0 25px;">';
-// echo '<div style="width:125px;">';
-// echo logoSVG();
-// echo '</div>';
-// echo '</a>';
+echo '<a href="' . home_url() . '" style="padding:0 25px;">';
+echo '<div style="width:125px;">';
+echo logoSVG();
+echo '</div>';
+echo '</a>';
 
 wp_nav_menu(array(
     'menu' => 'New - Right',
