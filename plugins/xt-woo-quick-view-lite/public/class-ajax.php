@@ -24,6 +24,15 @@ class XT_Woo_Quick_View_Ajax {
      * @access   private
      * @var      XT_Woo_Quick_View    $core    Core Class
      */
+    private $core;
+
+    /**
+     * Core class reference.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      XT_Woo_Quick_View    $core    Core Class
+     */
     public function __construct(&$core)
     {
         $this->core = $core;

@@ -245,6 +245,7 @@ class Iconic_WDS_Dates {
 					'weekday'          => date_i18n( 'D', $timestamp ),
 					'same_day'         => $this->get_same_day_date( 'Ymd' ) === $ymd,
 					'next_day'         => $this->get_next_day_date( 'Ymd' ) === $ymd,
+					'database'         => Iconic_WDS_Helpers::convert_date_for_database( $ymd ),
 				);
 			} else {
 				$available_dates[] = date_i18n( $format, $timestamp );

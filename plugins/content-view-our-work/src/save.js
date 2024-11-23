@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { RawHTML } from '@wordpress/element';
 
 /**
@@ -48,7 +48,7 @@ export default function save({ attributes }) {
 					<div className={`${attributes.carousel_class}`} style={`${attributes.carousel_style}`} data-aos={attributes.carousel_data_aos} data-aos-delay={attributes.carousel_data_aos_delay} data-aos-offset={attributes.carousel_data_aos_offset}>
 		{ attributes.gallery_images &&
 		attributes.gallery_images.map( ( image ) => (
-		<a href={ image.url } data-lightbox="slider-carousel" data-title={image.alt}>
+		<a href={ image.url } data-lightbox={`slider-carousel-${attributes.carousel_data_lightbox}`} data-title={image.alt}>
 			<img
 				key={ image.id }
 				src={ image.url }

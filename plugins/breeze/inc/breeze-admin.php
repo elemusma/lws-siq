@@ -89,6 +89,32 @@ class Breeze_Admin {
 			add_action( 'wpmu_new_blog', array( &$this, 'create_new_blog_items' ), 10, 6 );
 		}
 
+		add_action( 'admin_init',
+			function () {
+				// When permalinks are reset, we also reset the config files.
+				if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['category_base'] ) ) {
+					$to_action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : 'permalink';
+					if ( 'permalink' !== $to_action ) {
+						check_admin_referer( 'options-options' );
+					} else {
+						check_admin_referer( 'update-permalink' );
+					}
+					Breeze_Upgrade::refresh_config_files();
+				}
+			},
+			99
+		);
+
+		add_action(
+			'wp_login',
+			function ( $user_login, $user ) {
+				if ( in_array( 'administrator', (array) $user->roles, true ) ) {
+					Breeze_Upgrade::refresh_config_files();
+				}
+			},
+			10,
+			2
+		);
 	}
 
 	/**
@@ -196,8 +222,8 @@ class Breeze_Admin {
 	 * @return void
 	 */
 	public function clear_cache_if_changed_api( $product, $data_store ) {
-		// Check if this is a REST API update
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		// Check if this is a REST API update and clear the cache only if this is the first time hook is called.
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST && did_action( 'woocommerce_after_product_object_save' ) === 1 ) {
 			$this->breeze_clear_all_cache();
 		}
 	}
@@ -780,7 +806,13 @@ INLINEJS;
 	 */
 	public static function plugin_active_hook( $network_wide ) {
 		WP_Filesystem();
-
+		// Include required files.
+		if ( ! class_exists( 'Breeze_ConfigCache' ) ) {
+			require_once( BREEZE_PLUGIN_DIR . 'inc/cache/config-cache.php' );
+		}
+		if ( ! class_exists( 'Breeze_Configuration' ) ) {
+			require_once( BREEZE_PLUGIN_DIR . 'inc/breeze-configuration.php' );
+		}
 		$default_option = self::breeze_default_options_value();
 		$basic          = $default_option['basic'];
 		$file           = $default_option['file'];
@@ -961,6 +993,12 @@ INLINEJS;
 	 */
 	public static function plugin_deactive_hook() {
 		WP_Filesystem();
+		if ( ! class_exists( 'Breeze_ConfigCache' ) ) {
+			require_once( BREEZE_PLUGIN_DIR . 'inc/cache/config-cache.php' );
+		}
+		if ( ! class_exists( 'Breeze_Configuration' ) ) {
+			require_once( BREEZE_PLUGIN_DIR . 'inc/breeze-configuration.php' );
+		}
 		Breeze_ConfigCache::factory()->clean_up();
 		//Breeze_ConfigCache::factory()->clean_config();
 		Breeze_ConfigCache::factory()->toggle_caching( false );

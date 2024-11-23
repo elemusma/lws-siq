@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Hooks Finder
- * Version: 1.3.1
+ * Version: 1.3.2
  * Description: Easily enable/disable hooks and filters which are running in the page. A menu "WP Hooks Finder" will be added in your wordpress admin bar menu where you can display all the hooks and filters
  * Author: Muhammad Rehman
  * Author URI: https://muhammadrehman.com/
@@ -10,7 +10,7 @@
  */
 
 define( 'WPHF_PLUGIN_PATH', plugin_dir_url( __FILE__ ) );
-define( 'WPHF_PLUGIN_VERSION', '1.3.1' );
+define( 'WPHF_PLUGIN_VERSION', '1.3.2' );
 
 Class WP_Hooks_Finder {
 
@@ -164,12 +164,15 @@ Class WP_Hooks_Finder {
         if( isset( $_GET['wphf'] ) && $_GET['wphf'] == 1 ) {
 
             $search_for = 'all';
+            error_reporting(0);
         } else if( isset( $_GET['wphfa'] ) && $_GET['wphfa'] == 1 ) {
 
             $search_for = 'action';
+            error_reporting(0);
             // echo "<div id='wphf-action' title=' Action Hook'><img src='".WPHF_PLUGIN_PATH."assets/img/action.png' />" . '<a href="https://www.google.com/search?q='.$tag.'&btnI" target="_blank">'.$tag.'</a>' . "</div>";
         } else if( isset( $_GET['wphff'] ) && $_GET['wphff'] == 1 ) {
             $search_for = 'filter';
+            error_reporting(0);
             // echo "<div id='wphf-filter' title='Filter Hook'><img src='".WPHF_PLUGIN_PATH."assets/img/filter.png' />" . '<a href="https://www.google.com/search?q='.$tag.'&btnI" target="_blank">' . $tag . '</a>' . "</div>";
         }
 
@@ -262,6 +265,27 @@ Class WP_Hooks_Finder {
 	function render_action( $args = array() ) {
 		global $wp_filter;
 		
+      if( is_admin() ) { ?>
+        <span data-tag="<?php echo $args['ID'];?>" class="wphf-hook wphf-hook-<?php echo $args['type'] ?>">
+        <?php
+			if ( 'action' == $args['type'] ) {
+				?>
+				<span class="wphf-hook-type wphf-hook-type"><img src="<?php echo WPHF_PLUGIN_PATH.'assets/img/action.png';?>" width="10"/></span>
+				<?php
+			}
+			else if ( 'filter' == $args['type'] ) {
+				?>
+				<span class="wphf-hook-type wphf-hook-type"><img src="<?php echo WPHF_PLUGIN_PATH.'assets/img/filter.png';?>" width="10"/></span>
+				<?php
+			}
+			?>
+
+        
+            <?php echo $args['ID'];?>
+        </span>
+      <?php
+        } else {
+
 		// Get all the nested hooks
 		$nested_hooks = ( isset( $wp_filter[ $args['ID'] ] ) ) ? $wp_filter[ $args['ID'] ] : false ;
 		
@@ -292,7 +316,8 @@ Class WP_Hooks_Finder {
 			
 			// Main - Write the action hook name.
 			//echo esc_html( $args['ID'] );
-			echo $args['ID'];
+            echo $args['ID'];
+          
 			
 			// @TODO - Caller function testing.
 			if ( isset( $extra_data[1] ) && FALSE !== $extra_data[1] ) {
@@ -312,11 +337,11 @@ Class WP_Hooks_Finder {
 			}
 			
 			// Write out list of all the function hooked to an action.
-			if ( isset( $wp_filter[$args['ID']] ) ):
+			if ( isset( $wp_filter[$args['ID']] ) ) {
 				
 				$nested_hooks = $wp_filter[$args['ID']];
 				
-				if ( $nested_hooks ):
+				if ( $nested_hooks ) {
 					?>
 					<ul class="wphf-hook-dropdown">
                         
@@ -326,7 +351,7 @@ Class WP_Hooks_Finder {
 						</li>
 						
 						<?php
-						foreach ( $nested_hooks as $nested_key => $nested_value ) :
+						foreach ( $nested_hooks as $nested_key => $nested_value ) {
 							
 							// Show the priority number if the following hooked functions
 							?>
@@ -335,13 +360,13 @@ Class WP_Hooks_Finder {
 							</li>
 							<?php
 							
-							foreach ( $nested_value as $nested_inner_key => $nested_inner_value ) :
+							foreach ( $nested_value as $nested_inner_key => $nested_inner_value ) {
 								
 								// Show all teh functions hooked to this priority of this hook
 								?>
 								<li>
 									<?php
-									if ( $nested_inner_value['function'] && is_array( $nested_inner_value['function'] ) && count( $nested_inner_value['function'] ) > 1 ):
+									if ( $nested_inner_value['function'] && is_array( $nested_inner_value['function'] ) && count( $nested_inner_value['function'] ) > 1 ) {
 										
 										// Hooked function ( of type object->method() )
 										?>
@@ -366,7 +391,7 @@ Class WP_Hooks_Finder {
 											?><?php echo $nested_inner_value['function'][1] ?>
 										</span>
 										<?php
-									else :
+                                    } else {
 										
 										// Hooked function ( of type function() )
 										?>
@@ -374,26 +399,26 @@ Class WP_Hooks_Finder {
 											<?php echo $nested_inner_key ?>
 										</span>
 										<?php
-									endif;
+									}
 									?>
 									
 								</li>
 								<?php
 								
-							endforeach;
+                            }
 							
-						endforeach;
+						}
 						?>
 						
 					</ul>
 					<?php
-				endif;
-				
-			endif;
+				}
+			}
 			?>
 		</span>
 		<?php
-	}
+	    }
+    }
 
 }
 

@@ -4945,6 +4945,14 @@ const useDeliverySlots = (date, setDate, timeslot, setTimeslot, setTimeslotOptio
   const {
     setExtensionData
   } = checkoutExtensionData;
+  const [firstDateLoadFlag, setFirstDateLoadFlag] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const [firstTimeslotLoadFlag, setFirstTimeslotLoadFlag] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const selectDate = date => {
+    setDate(new Date(date.database));
+    setExtensionData('iconic-wds', 'date', date?.formatted);
+    setExtensionData('iconic-wds', 'date_ymd', date?.ymd);
+    fetchTimeslots(date.ymd);
+  };
 
   // Fetch bookable dates.
   const fetchBookableDates = function () {
@@ -4962,13 +4970,15 @@ const useDeliverySlots = (date, setDate, timeslot, setTimeslot, setTimeslotOptio
       setLoading(false);
       setConflictMessage(response.conflict);
       setExtensionData('iconic-wds', 'allowed', response.slots_allowed);
-      if (_helper__WEBPACK_IMPORTED_MODULE_1__.autoSelectFirstDate && !date) {
+      if (jckwds_vars.reserved_slot && !firstDateLoadFlag) {
+        selectDate(jckwds_vars.reserved_slot?.date);
+        setFirstDateLoadFlag(true);
+        return;
+      }
+      if ((0,_helper__WEBPACK_IMPORTED_MODULE_1__.autoSelectFirstDate)() && !date) {
         let dates = response?.bookable_dates;
         if (dates[0]) {
-          setDate(new Date(dates[0].timestamp * 1000));
-          setExtensionData('iconic-wds', 'date_ymd', dates[0].ymd);
-          setExtensionData('iconic-wds', 'date', dates[0].formatted);
-          fetchTimeslots(dates[0].ymd);
+          selectDate(dates[0]);
         }
       }
     });
@@ -4995,6 +5005,11 @@ const useDeliverySlots = (date, setDate, timeslot, setTimeslot, setTimeslotOptio
       }
       setTimeslotOptions(slots);
       setLoading(false);
+      if (jckwds_vars.reserved_slot && !firstTimeslotLoadFlag) {
+        setTimeslot(jckwds_vars.reserved_slot.time.value);
+        setExtensionData('iconic-wds', 'timeslot', jckwds_vars.reserved_slot.time.value);
+        setFirstTimeslotLoadFlag(true);
+      }
     });
   };
 

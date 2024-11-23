@@ -139,11 +139,12 @@ a:hover .cls-1.search {
 .nav ul.menu>li.current-menu-item>a,.nav ul.menu>li>a:hover,
 .current_page_parent>a,
 #menu-main-menu>.current_page_item>a,
+ul.menu .current_page_item a,
 .current_page_parent>.current-menu-item>a,
-.current-page-ancestor>a,
+.current-page-ancestor.current_page_parent>a,
 #menu-main-menu .current_page_ancestor .current_page_item>a {
     text-decoration: none;
-    color:var(--accent-secondary);
+    color:var(--accent-secondary)!important;
 }
 
 @media screen and (min-width:1200px) {
@@ -188,8 +189,11 @@ ul.sub-menu li {
 ul.sub-menu li a {
     color: black;
 }
+.current-page-ancestor.current_page_parent>a:hover,
+ul.menu li a:hover,
 ul.sub-menu li a:hover {
     color: var(--accent-secondary);
+    text-decoration:underline!important;
 }
 
 @media only screen and (max-width:1199px) {

@@ -4,7 +4,7 @@ namespace SDTDL;
 if (!defined('ABSPATH')) {
     exit;
 }
-define('SDTDL_VERSION', '2.1.3');
+define('SDTDL_VERSION', '2.2.1');
 
 class SDTDL
 {
@@ -367,15 +367,11 @@ class SDTDL
 
     private function _users_authorized_to_affect_to($affected_to): string
     {
-        //We can safely the assume admins are not messing with that
-        if (current_user_can('administrator')) {
-            return $affected_to;
-        }
         $affected_to = self::get_affected_to_user_ids_array($affected_to);
         $allowed_roles = $this->_user_can_affect_to_roles;
         $forbidden_users = $this->_users_cannot_be_affected_to;
         foreach ($affected_to as $key => $user_id) {
-            if (in_array($user_id, $forbidden_users)) {
+            if (!$user_id || in_array($user_id, $forbidden_users)) {
                 unset($affected_to[$key]);
                 continue;
             }

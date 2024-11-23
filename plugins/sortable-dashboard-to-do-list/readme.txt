@@ -1,9 +1,9 @@
 === Sortable Dashboard To-Do List ===
-Contributors: Jeffinho2016,jfgmedia
-Tags: dashboard, todo list, task, list, admin
+Contributors: jfgmedia
+Tags: dashboard widget, todo list, task, to-do, task management
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 2.1.3
+Tested up to: 6.7
+Stable tag: 2.2.1
 Requires PHP: 7.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,7 +14,7 @@ Adds a sortable to-do list widget to your WP dashboard. Useful for developers, c
 
 The plugin adds a sortable to-do list to your WP dashboard. This can be useful for developers, or even for content writers. With the possibility to affect tasks to other users, it's like having your own mini Trello directly on your dashboard!
 
-### NEW! Task Affectation ###
+### Task Affectation ###
 <ul>
 <li>
 To-do list items can be affected to other users
@@ -132,6 +132,19 @@ Not available at the moment
 It will have no impact on site speed whatsoever. The plugin only launches for users that have the ability to edit posts.
 
 == Changelog ==
+
+= 2.2.1 =
+* CSS Fix: Font-size for front-end list tasks
+
+= 2.2 =
+* New: Plain text URLs are now automatically clickable when the task is in "view" mode.
+
+= 2.1.5 =
+* PHP warning fix
+
+= 2.1.4 =
+* Tested up to WordPress 6.7
+* Minor security fix: Admin accounts can no longer potentially force affect tasks to users they're potentially not allowed to
 
 = 2.1.3 =
 * CSS opacity fix

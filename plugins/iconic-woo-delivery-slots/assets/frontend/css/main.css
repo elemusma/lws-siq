@@ -1280,7 +1280,7 @@ a.wds-reservation-table__head-title-button:hover {
   --wds-datepicker-day-font-weight: 400;
   --wds-datepicker-day-color-hover-bg: rgba(68, 75, 84, 0.1);
   --wds-datepicker-day-color-hover-text: rgba(68, 75, 84, 0.1);
-  --wds-datepicker-day-disabled-text: rgba(255, 255, 255, 0.2);
+  --wds-datepicker-day-disabled-text: rgba(68, 75, 84, 0.2);
   --wds-datepicker-day-today-bg: #fbfbfc;
   --wds-datepicker-day-today-color: rgba(68, 75, 84, 0.2);
   --wds-datepicker-nav-hover-bg: rgba(68, 75, 84, 0.1);

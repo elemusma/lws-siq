@@ -75,8 +75,8 @@ class Iconic_WDS_API {
 		);
 
 		$open_endpoints = array(
-			'get_slots_on_date'  => array( __CLASS__, 'get_slots_on_date' ),
-			'get_checkout_data'  => array( __CLASS__, 'get_checkout_data' ),
+			'get_slots_on_date' => array( __CLASS__, 'get_slots_on_date' ),
+			'get_checkout_data' => array( __CLASS__, 'get_checkout_data' ),
 		);
 
 		foreach ( $restricted_endpoints as $endpoint => $callback ) {
@@ -209,7 +209,7 @@ class Iconic_WDS_API {
 	 * @return array
 	 */
 	public static function get_checkout_data() {
-		global $iconic_wds_dates, $iconic_wds;
+		global $iconic_wds;
 
 		$shipping_method = filter_input( INPUT_GET, 'shipping_method' );
 

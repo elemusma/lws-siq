@@ -41,6 +41,8 @@ wp_enqueue_style('img', get_theme_file_uri('/css/elements/img.css'));
 
 // if(is_front_page()){
 wp_enqueue_style('home', get_theme_file_uri('/css/sections/home.css'));
+	
+wp_enqueue_style('home', get_theme_file_uri('/css/sections/services.css'));
 
 if(is_page(8)){
     wp_enqueue_style('cart-css', get_theme_file_uri('/css/sections/cart.css'));

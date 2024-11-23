@@ -87,6 +87,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"carousel_data_lightbox": {
+			"type": "string",
+			"default": ""
+		},
 		"carousel_data_aos": {
 			"type": "string",
 			"default": ""

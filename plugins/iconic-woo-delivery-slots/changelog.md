@@ -1,3 +1,9 @@
+2024-11-19 - version 2.6.0  
+[update] Performance improvements on the checkout page: Skip SQL queries when none of the time slots have a Max Order Limit  
+[fix] Select the reserved slot on block checkout  
+[fix] Bug where the date appear as one day short in the admin order table when timeslot is ASAP  
+[fix] Bug where incorrect timeslot appear when address change trigger a shipping zone change too  
+
 2024-09-24 - version 2.5.0  
 [new] Make the delivery date column sortable in the admin orders screen for HPOS   
 [fix] Bug where orders status would be changed to `on-hold` when order contains delivery slots  

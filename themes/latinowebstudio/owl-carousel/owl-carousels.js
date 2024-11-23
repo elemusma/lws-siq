@@ -95,13 +95,13 @@ $('.carousel-slider').owlCarousel({
 });
 $('.carousel-view-our-work').owlCarousel({
     // center: true,
-    loop: true,
+    loop: false,
     margin: 20,
     nav: true,
     dots: false,
     autoplay: true,
     autoplayTimeout: 3500,
-    autoplaySpeed: 5000, // this seems to make it autoscroll
+    autoplaySpeed: 1000, // this seems to make it autoscroll
     autoplayHoverPause: false,
     animateIn: 'fadeIn',
     animateOut: 'fadeOut',

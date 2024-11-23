@@ -41,6 +41,7 @@
     background: red;
     height: 18px;
     line-height: 18px;
+    font-size: 14px;
     text-align: center;
     width: 18px;
     top: -5px;
@@ -85,6 +86,7 @@ textarea.sdtdl-content-text {
 
 .sdtdl-content-text {
     white-space: pre-line;
+    font-size: 13px;
 }
 
 #new-sdtdl-title.error::placeholder, #edit-sdtdl-title.error::placeholder {
@@ -110,6 +112,7 @@ textarea.sdtdl-content-text {
 }
 .sdtdl-list, .sdtdl-affected-intro {
     padding: 0 10px;
+    font-size: 13px;
 }
 .sdtdl-list {
     visibility: hidden;

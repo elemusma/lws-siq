@@ -7,7 +7,7 @@
  * @package StellarWP\Telemetry
  *
  * @license GPL-2.0-or-later
- * Modified by James Kemp on 24-September-2024 using Strauss.
+ * Modified by James Kemp on 19-November-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 

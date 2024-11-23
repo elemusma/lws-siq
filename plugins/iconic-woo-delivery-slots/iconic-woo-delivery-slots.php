@@ -3,13 +3,13 @@
  * Plugin Name: WooCommerce Delivery Slots by Iconic
  * Plugin URI: https://iconicwp.com/products/woocommerce-delivery-slots/
  * Description: Allow your customers to select a delivery slot for their order
- * Version: 2.5.0
+ * Version: 2.6.0
  * Author: Iconic
  * Author URI: https://iconicwp.com
  * Author Email: support@iconicwp.com
  * Text Domain: jckwds
  * WC requires at least: 2.6.14
- * WC tested up to: 9.1.2
+ * WC tested up to: 9.4.1
  *
  * @package Iconic_WDS
  */
@@ -51,7 +51,7 @@ class Iconic_WDS {
 	 *
 	 * @var string
 	 */
-	public static $version = '2.5.0';
+	public static $version = '2.6.0';
 
 	/**
 	 * The singleton instance of the plugin.
@@ -653,7 +653,7 @@ class Iconic_WDS {
 		$time_slot_text        = Iconic_WDS_Helpers::get_label( 'time_slot', $order );
 		$timestamp             = $date_time['timestamp'];
 		$date                  = empty( $date_time['date'] ) ? false : $date_time['date'];
-		$date                  = $date_format ? date_i18n( $date_format, $timestamp ) : $date;
+		$date                  = $date_format ? wp_date( $date_format, $timestamp ) : $date;
 		$time                  = empty( $date_time['time'] ) ? false : apply_filters( 'iconic_wds_time_display', $date_time['time'], $date_time );
 
 		/**
@@ -690,10 +690,6 @@ class Iconic_WDS {
 			}
 
 			if ( $date ) {
-				if ( $date_format ) {
-					$date = date_i18n( $date_format, $timestamp );
-				}
-
 				printf( '<p><strong>%s</strong> <br>%s</p>', esc_html( $delivery_date_text ), esc_html( $date ) );
 			}
 
@@ -1352,6 +1348,17 @@ class Iconic_WDS {
 
 		global $wpdb;
 
+		// No need to run query if lockout/max orders are not set.
+		if ( ! $this->timeslots_have_max_orders_limit( $timeslots ) ) {
+			$counts[ $ymd ] = array_fill_keys( wp_list_pluck( $timeslots, 'id' ), true );
+			/**
+			 * Filter slots available count.
+			 *
+			 * @since 1.25.0
+			 */
+			return apply_filters( 'iconic_wds_slots_available_count', $counts[ $ymd ], $ymd, $timeslots );
+		}
+
 		$timeslot_ids   = wp_list_pluck( $timeslots, 'id' );
 		$counts[ $ymd ] = array_fill_keys( $timeslot_ids, 0 );
 
@@ -1472,7 +1479,22 @@ class Iconic_WDS {
 		return implode( ', ', $statuses );
 	}
 
+	/**
+	 * Check if timeslots have a max orders limit.
+	 *
+	 * @param array $timeslots Timeslots.
+	 *
+	 * @return bool True If at least one timeslot has a max orders limit, false otherwise.
+	 */
+	public function timeslots_have_max_orders_limit( $timeslots ) {
+		foreach ( $timeslots as $timeslot ) {
+			if ( '' !== trim( $timeslot['lockout'] ) ) {
+				return true;
+			}
+		}
 
+		return false;
+	}
 
 	/**
 	 * ASAP slot data.
@@ -1588,6 +1610,7 @@ class Iconic_WDS {
 				'database'  => Iconic_WDS_Helpers::convert_date_for_database( $slot_id_exploded[0] ),
 				'formatted' => wp_date( Iconic_WDS_Helpers::date_format(), $date->getTimestamp() ),
 				'id'        => $date->format( 'Ymd' ),
+				'ymd'       => $date->format( 'Ymd' ),
 			),
 			'time'      => isset( $slot_id_exploded[1] ) ? $this->get_timeslot_data( $slot_id_exploded[1] ) : false,
 			'formatted' => Iconic_WDS_Reservation_Table::get_reserved_slot_formatted(),
@@ -2214,11 +2237,13 @@ class Iconic_WDS {
 	 * @return string|null
 	 */
 	public static function get_chosen_shipping_method_for_update_order_review() {
-		$post_data = filter_input( INPUT_POST, 'post_data' );
-
+		$post_data       = filter_input( INPUT_POST, 'post_data' );
+		$post_data_array = array();
 		parse_str( $post_data, $post_data_array );
 
-		if ( empty( $post_data_array['shipping_method'] ) ) {
+		$allowed_methods = (array) WC()->session->get( 'shipping_for_package_0' );
+
+		if ( empty( $post_data_array['shipping_method'] ) || ! in_array( $post_data_array['shipping_method'][0], $allowed_methods, true ) ) {
 			return self::get_chosen_shipping_method_for_session();
 		}
 

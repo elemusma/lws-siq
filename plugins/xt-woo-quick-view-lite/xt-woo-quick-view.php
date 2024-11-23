@@ -11,9 +11,9 @@
  * Plugin Name: XT Quick View for WooCommerce
  * Plugin URI:  https://xplodedthemes.com/products/woo-quick-view/
  * Description: An interactive product quick view modal for WooCommerce that provides the user a quick access to the main product information with smooth animation. Fully customizable right from WordPress Customizer with Live Preview.
- * Version:     2.1.3
+ * Version:     2.1.5
  * WC requires at least: 3.0.0
- * WC tested up to: 9.1
+ * WC tested up to: 9.3
  * Author:      XplodedThemes
  * Author URI:  https://xplodedthemes.com
  * Text Domain: woo-quick-view
@@ -35,7 +35,7 @@ $market = (strpos($market, 'XT_MARKET') !== false) ? 'freemius' : $market;
 $market = (defined('XT_MARKET')) ? XT_MARKET : $market;
 
 $xt_wooqv_plugin = array(
-    'version'       => '2.1.3',
+    'version'       => '2.1.5',
     'name'          => 'Quick View for WooCommerce',
     'menu_name'     => 'Quick View',
     'url'           => 'https://xplodedthemes.com/products/woo-quick-view/',

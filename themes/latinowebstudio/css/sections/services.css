@@ -1,5 +1,143 @@
+@media only screen and (max-width:991px) {
+.light-beam-fade.desktop,
+.section-bg.desktop{
+display:none!important;
+}
+}
+
+@media only screen and (min-width:992px) {
+.mobile-graphics{
+display:none!important;
+}
+}
+
+.light-beam-fade.desktop {
+position:absolute;
+display:block;
+top:183px;
+left: 0;
+width: 25vw;
+pointer-events:none;
+height:calc(100% - 293px);
+}
+
+.section-bg.desktop{
+position:absolute;
+display:block;
+width:100%;
+top:-6%;
+left:0px;
+pointer-events:none;
+height:126%;
+}
+
+@media only screen and (min-width:768px){
+.row-mobile-graphics {
+right:0px;
+top:0px;
+z-index:1;
+position:absolute;
+}
+}
+
+.border-yellow-col {
+width:100%;
+height:auto;
+pointer-events:none;
+padding:60px 15px;
+}
+
+.border-yellow-img.mobile {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    right: 0;
+}
+
+.col-step .step-glow {
+transition:all .25s ease-in-out;
+}
+
+.col-step:hover .step-glow {
+opacity:1!important;
+cursor:pointer;
+}
+
+.step-img {
+width:100%;
+height:auto;
+object-fit:contain;
+}
+.col-step {
+    padding: 0;
+}
+.step-glow {
+top:-2px;
+right:-3px;
+opacity:0;
+height:102%;
+width:auto;
+position:absolute;
+}
+
+.row-button-cta {
+padding-top:25px;
+}
+.heading {
+text-shadow:var(--text-shadow);
+}
+.text-subheading{
+color:var(--accent-secondary);
+letter-spacing:.2em;
+}
+.text-specifications {
+width:75%;
+height:auto;
+}
+
+.light-beam-fade.mobile {
+top:10%;
+left:-10%;
+pointer-events:none;
+height:78%;
+z-index:-1;
+width:100%;
+position:absolute;
+}
+
+.section-bg.mobile {
+width:100%;
+height:auto;
+}
+
+@media only screen and (max-width:767px) {
+.mobile-graphics {
+    padding-bottom: 75px;
+margin-bottom: 25px;
+}
+.border-yellow-col {
+padding: 40px 15px;
+}
+
+.bg-mobile-graphics {
+    position: absolute;
+    height: 100%;
+top:5px;
+}
+
+.section-bg.mobile {
+width:100%;
+height:110%;
+}
+
+.light-beam-fade.mobile {
+height:90%;
+}
+
+}
 /* start of services home */
-.col-services img,
+/* .col-services img,
 .col-services-overlay {
     transition: all .25s ease-in-out;
 }
@@ -10,6 +148,6 @@
 
 .col-services:hover .col-services-overlay {
     opacity: 0 !important;
-}
+} */
 
 /* end of services home */

@@ -11,9 +11,9 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps, InnerBlocks, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { Button, PanelBody, __experimentalInputControl as InputControl,TextControl, } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
+import { InnerBlocks, InspectorControls, MediaUpload, MediaUploadCheck, useBlockProps } from '@wordpress/block-editor';
+import { __experimentalInputControl as InputControl, PanelBody } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,7 +32,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { section_style, section_class, section_id, carousel_class,carousel_style,carousel_data_aos,carousel_data_aos_delay,carousel_data_aos_offset, gallery_images, gallery_images_class,gallery_images_style, container_style, container_class, container_id, row_style, row_class, row_id, col_style, col_class, col_id, col_data_aos, col_data_aos_delay,col_data_aos_delay_offset } = attributes;
+	const { section_style, section_class, section_id, carousel_class,carousel_style,carousel_data_lightbox,carousel_data_aos,carousel_data_aos_delay,carousel_data_aos_offset, gallery_images, gallery_images_class,gallery_images_style, container_style, container_class, container_id, row_style, row_class, row_id, col_style, col_class, col_id, col_data_aos, col_data_aos_delay,col_data_aos_delay_offset } = attributes;
 
 	const [value, setValue] = useState('');
 
@@ -74,6 +74,11 @@ export default function Edit({ attributes, setAttributes }) {
 					label="Carousel Style"
 					value={carousel_style}
 					onChange={(nextValue) => setAttributes({ carousel_style: nextValue })}
+				/>
+				<InputControl
+					label="Carousel Data Lightbox"
+					value={carousel_data_lightbox}
+					onChange={(nextValue) => setAttributes({ carousel_data_lightbox: nextValue })}
 				/>
 				<InputControl
 					label="Carousel Data AOS"

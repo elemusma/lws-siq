@@ -7,7 +7,7 @@ Author URI: https://www.xplodedthemes.com
 Tags: quick view, woocommerce quick view,  woocommerce quickview, quickview, woocommerce product quick view, woocommerce product slider, ajax add to cart, product lightbox, product quick view, product modal, quick view modal, woo quick view
 Requires at least: 4.6
 Tested up to: 6.6
-Stable tag: 2.1.3
+Stable tag: 2.1.5
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -88,6 +88,14 @@ Installing "Quick View for WooCommerce" can be done by following these steps:
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+#### V.2.1.5 - 04.11.2024
+- **security**: Removed SVG upload support for security reasons. To enable SVG uploads, please use a plugin like "Safe SVG" https://wordpress.org/plugins/safe-svg/
+- **update**: XT Framework update
+
+#### V.2.1.4 - 04.11.2024
+- **update**: Freemius SDK update v2.9.0
+- **support**: Fixed deprecated code causing "Creation of dynamic property" log errors in PHP 8.2
 
 #### V.2.1.3 - 14.09.2024
 - **update**: Freemius SDK update v2.8.0

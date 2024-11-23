@@ -8,3 +8,13 @@ jQuery(document).ready(function() {
         jQuery('div').removeAttr('style');
     }
 });
+
+elem = document.querySelector("body");
+while(elem.attributes.length > 0) {
+    elem.removeAttributeNode(elem.attributes[0]);
+}
+
+elem = document.querySelector("html");
+while(elem.attributes.length > 0) {
+    elem.removeAttributeNode(elem.attributes[0]);
+}
